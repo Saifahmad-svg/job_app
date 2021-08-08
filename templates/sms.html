@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>OTP Validation</title>
+    <style>
+    .nav{
+        width: 78px;
+        height: 22px;
+        padding: 30px 0;
+        padding-left: 60px;
+    }
+        .smsWrap{
+            flex: display;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        /* form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        } */
+        h2{
+            margin-bottom: 34px;
+            color: #5D4DA8;
+            font-family: "Lato", sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 48px;
+            line-height: 58px;
+        }
+        .smsWrap p{
+            margin-bottom: 138px;
+            font-family: "Lato", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 29px;
+        }
+        button{
+            margin-top: 91px;
+            width: 369px;
+            height: 66px;
+            background: #5D4DA8;
+            border-radius: 15px;
+        }
+        button a{
+            font-family:"Lato", sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 29px;
+            width: 75px;
+            height: 29px;
+            color: #FFFFFF;
+        }
+        .otpBox{
+           
+            width: 360px;
+            height: 66px;
+        }
+        form p a{
+            width: 300px;
+            height: 29px;
+            font-family: "Lato", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 29px;
+            color: #5D4DA8;
+        }
+        
+        .digit-group input {
+            width: 30px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: 3px solid #000000;
+            font-family: "Raleway", sans-serif;
+            font-weight: 200;
+            border-right: none;
+            border-left: none;
+            border-top: none;
+            margin: 0 2px;
+            font-size: 1.4rem;
+            
+        }
+        .digit-group input:active{
+            border-right: none;
+            border-left: none;
+            border-top: none;
+            outline: none;
+        }
+        .digit-group input:focus-visible{
+            border-right: none;
+            border-left: none;
+            border-top: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img class="nav" src="/css/Yuung.png"> 
+    </nav>
+    <div class="container">
+        <div class="smsWrap">
+        <h2>Check your SMS</h2>
+        <p class="msz">Please enter below the 6-digit OTP sent to your registered mobile number</p>
+        
+<form action="/company/smsVerification" method="POST" class="digit-group" data-group-name="digits" data-autosubmit="false" autocomplete="off">
+	<div class="wrapForm">
+    <input type="text" id="digit-1" name="digit-1" data-next="digit-2" />
+	<input type="text" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" />
+	<input type="text" id="digit-3" name="digit-3" data-next="digit-4" data-previous="digit-2" />
+	<input type="text" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" />
+	<input type="text" id="digit-5" name="digit-5" data-next="digit-6" data-previous="digit-4" />
+	<input type="text" id="digit-6" name="digit-6" data-previous="digit-5" />
+</div>
+    <button type="submit">
+        <a>Submit</a>
+    </button>
+    <p><a href="#">Click to send a new code</a></p>
+</form>
+    </div>
+    </div>
+    <script>
+      $('.digit-group').find('input').each(function() {
+	$(this).attr('maxlength', 1);
+	$(this).on('keyup', function(e) {
+		var parent = $($(this).parent());
+		
+		if(e.keyCode === 8 || e.keyCode === 37) {
+			var prev = parent.find('input#' + $(this).data('previous'));
+			
+			if(prev.length) {
+				$(prev).select();
+			}
+		} else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 39) {
+			var next = parent.find('input#' + $(this).data('next'));
+			
+			if(next.length) {
+				$(next).select();
+			} else {
+				if(parent.data('autosubmit')) {
+					parent.submit();
+				}
+			}
+		}
+	});
+});
+
+    </script>
+</body>
+</html>

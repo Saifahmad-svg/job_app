@@ -1,0 +1,490 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Profile Information</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .sidenav {
+        width: 350px;
+        height: 116vh;
+        position: relative;
+        z-index: 1;
+        background: #5d4da8;
+        /* box-shadow: 4px 0px 4px rgb(221 221 221 / 25%); */
+        /* overflow-x: hidden; */
+        /* padding-top: 20px;*/
+      }
+
+      .sidenav a {
+        padding: 37px 8px 6px 70px;
+        width: 350px;
+        height: 31px;
+        text-decoration: none;
+        font-size: 25px;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 26px;
+        line-height: 31px;
+        color: #ffffff;
+        display: block;
+      }
+      .sec1 {
+        padding-top: 93px;
+      }
+      .prof {
+        display: flex;
+        align-items: center;
+        padding-top: 51px;
+      }
+      .prof p {
+        color: #5d4da8;
+        padding-left: 26px;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+      }
+      .prof a, .upload{
+        color: #5d4da8;
+      }
+      .container img {
+        border-radius: 50px;
+      }
+      .container {
+        width: auto;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+      .proftypeWrap {
+        background-image: url("../css/yellow-patch.png"),
+          url("../css/vector 4.png");
+        background-position: bottom left, right -175px top -65px;
+        background-repeat: no-repeat;
+        /* background-size: cover; */
+        height: 100%;
+        width: 100%;
+      }
+      p {
+        margin: 0px;
+        padding: 0px;
+      }
+      .title {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        padding: 0px;
+        margin: 0px;
+        line-height: 58px;
+        color: #5d4da8;
+      }
+      .bussname input {
+        width: 361px;
+        height: 55px;
+        border: 1px solid #c4c4c4;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin-top: 15px;
+
+        font-style: normal;
+        font-size: 20px;
+        line-height: 22px;
+        padding-left: 20px;
+      }
+      .bussname p {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        padding-top: 30px;
+        font-size: 18px;
+        line-height: 22px;
+      }
+      .nav {
+        width: 78px;
+        height: 22px;
+        padding: 30px 0;
+        padding-left: 60px;
+      }
+      hr {
+        /* padding-left: 150px ; */
+        margin-top: 35px;
+        height: 1px;
+        border: none;
+        background-color: #ebebeb;
+      }
+      h2 {
+        padding: 0px;
+        margin: 0px;
+      }
+      .address {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 30px;
+        padding-top: 35px;
+      }
+      .wrap {
+        display: flex;
+        /* justify-content: space-around; */
+        width: 100%;
+        gap: 0px;
+      }
+      .addline {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #5e5e5e;
+        padding-top: 25px;
+      }
+      .addline input {
+        width: 361px;
+        height: 55px;
+        border: 1px solid #c4c4c4;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin-top: 15px;
+        
+        font-style: normal;
+        font-size: 20px;
+        line-height: 22px;
+        padding-left: 20px;
+      }
+      .upload {
+        display: block;
+        text-align-last: end;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+      }
+      .subsec2 {
+        display: flex;
+        gap: 63px;
+        padding-top: 25px;
+      }
+      .subsec3 {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 8px;
+      }
+      .btype {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        margin-top: 15px;
+        line-height: 22px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        color: #5e5e5e;
+      }
+      input[type="checkbox"] {
+        width: 25px;
+        height: 25px;
+      }
+      .arrowWrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .arrowIcon{
+        padding-top: 37px;
+        padding-right: 8px;
+      }
+      .btype label {
+        font-size: 18px;
+        font-weight: 400;
+        color: #5e5e5e;
+        font-family: "Lato", sans-serif;
+      }
+      button {
+        margin-top: 30px;
+        width: 349px;
+        border: none;
+        height: 66px;
+        background: #5d4da8;
+        border-radius: 15px;
+      }
+      .back {
+        background: #d8d8d8;
+        border-radius: 15px;
+        border: none;
+        margin-right: 59px;
+      }
+      .back a {
+        color: black;
+      }
+      button a {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        width: 75px;
+        height: 29px;
+        color: #ffffff;
+      }
+      .btnWrap {
+        margin-top: 73px;
+        padding-bottom: 80px;
+      }
+      /* .router {
+        display: none;
+      } */
+      @media only screen and (max-width: 1024px) {
+        .subsec2 {
+          display: flex;
+          gap: 40px;
+        }
+        .subsec3 {
+          display: flex;
+          gap: 20px;
+        }
+        .container {
+          width: auto;
+        }
+      }
+      @media only screen and (max-width: 999px) {
+        .subsec2 {
+          display: flex;
+          gap: 40px;
+        }
+        .subsec3 {
+          display: flex;
+          gap: 20px;
+        }
+        .sidenav {
+          display: none;
+        }
+        .container {
+          padding-left: 35px;
+          padding-right: 35px;
+
+          padding-top: 20px;
+        }
+        p {
+          margin: 0px;
+          padding: 0px;
+        }
+        /* .router {
+          display: block;
+        } */
+      }
+      @media only screen and (max-width: 768px) {
+        .subsec2 {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .subsec3 {
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 10px;
+        }
+        .upload {
+          text-align-last: auto;
+        }
+        .container {
+          width: auto;
+        }
+        /* .navwrap{
+            visibility: hidden;
+        } */
+      }
+      @media only screen and (max-width: 540px) {
+        .back {
+          margin-right: 0px;
+        }
+        .bussname input,
+        .addline input {
+          width: 100%;
+
+        font-style: normal;
+        font-size: 15px;
+        line-height: 22px;
+        padding-left: 20px;
+        }
+        .title {
+          font-size: 35px;
+        }
+        button {
+          width: 100%;
+        }
+        @media only screen and (max-width: 414px) {
+          .title {
+            font-size: 30px;
+          }
+          .prof p {
+            font-size: 17px;
+          }
+          button a {
+            font-size: 20px;
+          }
+          button {
+            height: 54px;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="wra">
+      <div class="sidenav">
+        <nav>
+          <img class="nav" src="/css/Yuung White.png" />
+        </nav>
+        <div class="navwrap">
+          <a href="/company/proftype">Type of Profile</a>
+          <div class="arrowWrap">
+            <a href="/company/profinfo">Profile Information</a>
+  
+            <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
+          </div>
+          <a href="/company/jobposting">Job Posting</a>
+          <a href="/company/livejobs">Live Jobs</a>
+          <a href="/company/applications">Applications</a>
+        </div>
+      </div>
+      <div class="proftypeWrap">
+        <div class="container">
+          <form action="/company/profinfo" method="POST" >
+          <!-- <p class="router"><a href="/profile">Back</a></p> -->
+          <div class="sec1">
+            <h2 class="title">Profile Information</h2>
+            <div class="prof">
+              <img src="/css/prof.png" />
+              <p>
+                <a href="#"> Upload profile image of Business / Individual</a>
+              </p>
+            </div>
+            <div class="bussname">
+              <p>Name of Business / Individual</p>
+              <input type="text" />
+            </div>
+          </div>
+          <hr />
+          <div class="sec2">
+            <h2 class="address">Address</h2>
+            <div class="subsec2">
+              <div class="addline">
+                <p>Address line 1</p>
+                <input type="text" />
+              </div>
+              <div class="addline">
+                <p>Street</p>
+                <input type="text" />
+              </div>
+            </div>
+
+            <div class="subsec2">
+              <div class="addline">
+                <p>Town / City</p>
+                <input type="text" />
+              </div>
+              <div class="addline">
+                <p>State</p>
+                <input type="text" />
+              </div>
+            </div>
+            <div class="addline">
+              <p>Pincode</p>
+              <input type="text" />
+            </div>
+          </div>
+          <hr />
+          <div class="sec3">
+            <div class="subsec2">
+              <div class="bussname">
+                <p>Business / Individual mobile number</p>
+                <input value="<%= number %>" readonly/>
+              </div>
+              <div class="bussname">
+                <p>Business incorporation certificate</p>
+                <input type="file" />
+                <a class="upload" href="#"> Upload</a>
+              </div>
+            </div>
+          </div>
+          <div class="bussname">
+            <p>Nature of business</p>
+          </div>
+          <div class="subsec3">
+            <div class="btype">
+              <input type="checkbox" name="type" value="Bar" />
+              <label>Bar</label>
+            </div>
+            <div class="btype">
+              <input type="checkbox" name="type" value="Restaurant" />
+              <label>Restaurant</label>
+            </div>
+            <div class="btype">
+              <input type="checkbox" name="type" value="Kirana store" />
+              <label>Kirana store</label>
+            </div>
+            <div class="btype">
+              <input type="checkbox" name="type" value="Supermarket" />
+              <label>Supermarket</label>
+            </div>
+            <div class="btype">
+              <input type="checkbox" name="type" value="Healthcare center" />
+              <label>Healthcare center</label>
+            </div>
+          </div>
+          <div class="subsec3">
+            <div class="btype">
+              <input type="checkbox" name="type" value="Goverment office" />
+              <label>Goverment office</label>
+            </div>
+            <div class="btype">
+              <input type="checkbox" name="type" value="IT park" />
+              <label>IT park</label>
+            </div>
+            <div class="btype">
+              <input type="checkbox" name="type" value="Clothing shop" />
+              <label>Clothing shop</label>
+            </div>
+            <div class="btype">
+              <input type="checkbox" name="type" value="Showroom" />
+              <label>Showroom</label>
+            </div>
+          </div>
+          <div class="btype">
+            <input type="checkbox" name="type" value="Others" />
+            <label>Others</label>
+          </div>
+          <div class="btnWrap">
+            <button class="back" type="submit">
+              <a>Back</a>
+            </button>
+            <button type="submit">
+              <a>Next</a>
+            </button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

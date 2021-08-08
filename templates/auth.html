@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+    <title>Authentication</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .backgroundImg{
+            background:  url("/css/Vector 4.png"),  url("/css/Vector 6.png");
+            background-position: right 110px top -105px , left 2px bottom 0px;
+            background-repeat: no-repeat;
+            /* background-size: cover;*/
+            height: 538px; 
+            width: 100%;   
+            /* height: 100vh; */
+        }
+        .container{
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+        .nav{
+            width: 78px;
+            height: 22px;
+            padding: 30px 0;
+            padding-left: 60px;
+        }
+        .authWrap{
+            display: flex;
+            /* justify-content: space-between; */
+            gap: 100px;
+            align-items: center;
+        }
+        .image{
+            /* height: 765px;
+            width: 715px;
+            left: 698px;
+            top: 138px;
+            border-radius: 0px; */
+            background:  linear-gradient(270.23deg, #FFFFFF 8.06%, rgba(255, 255, 255, 0) 46.81%),url("/css/image 11.png");
+            background-position: center;
+            background-size: cover;
+            height: 748px;
+            width: 50%;
+            
+        }
+        .log{
+            font-size: 48px;
+            font-family: 'Lato', sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            color: #5D4DA8;
+            padding-bottom: 100px;
+        }
+        .mob{
+            padding-bottom: 20px;
+            font-family: Lato;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 29px;
+        }
+        .mobbox{
+            width: 300.77px;
+            height: 33.42px;
+            border: 1px solid #909090;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .submit{
+            width: 300.77px;
+            height: 33.42px;
+            border: 1px solid #909090;
+            box-sizing: border-box;
+            border-radius: 10px;
+            background: #5D4DA8;
+            color: #FFFFFF;
+        }
+        .orange{
+            position: absolute;
+            display: flex;
+            width: 550px;
+            display: inline-flex;
+            padding-left: 450px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            /* margin-top: 90px;
+            padding-left: 100px */
+        }
+        @media only screen and (max-width: 999px) {
+            .authWrap{
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="backgroundImg">
+    <nav>
+        <img class="nav" src="/css/Yuung.png"> 
+        <!-- <img class="orange" src="/css/Vector 4.png"> -->
+    </nav>
+        <div class="authWrap">
+        <div class="image">
+            <!-- <img src="/css/image 11.png" alt=""> -->
+        </div>
+        <form method="POST" action="/company/register" >
+                <label class="log" >Sign up / Log In</label>
+                <label class="mob" >Mobile No.</label>
+                <input class="mobbox" type="text" name="userNumber" >
+                <input class="submit" type="submit" value="Continue">
+        </form>
+    </div>
+    </div>
+
+    <footer>
+        <!-- <img src="/css/Vector 6.png"> -->
+    </footer>
+    </div>
+</body>
+</html>

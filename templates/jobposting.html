@@ -1,0 +1,446 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Job Posting</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .sidenav {
+        width: 350px;
+        height: 100vh;
+        position: relative;
+        z-index: 1;
+        background: #5d4da8;
+        /* box-shadow: 4px 0px 4px rgb(221 221 221 / 25%); */
+        /* overflow-x: hidden; */
+        /* padding-top: 20px;*/
+      }
+
+      .sidenav a {
+        padding: 37px 8px 6px 70px;
+        width: 350px;
+        height: 31px;
+        text-decoration: none;
+        font-size: 25px;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 26px;
+        line-height: 31px;
+        color: #ffffff;
+        display: block;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      .title {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 58px;
+        color: #5d4da8;
+      }
+      .container {
+        width: auto;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+      .sec1 {
+        padding-top: 73px;
+      }
+      .bussname input {
+        border: 1px solid #c4c4c4;
+        box-sizing: border-box;
+        border-radius: 8px;
+      }
+      .inp {
+        width: 361px;
+        height: 55px;
+        border: 1px solid #c4c4c4;
+        box-sizing: border-box;
+        border-radius: 8px;
+        padding: 0;
+        margin-top: 15px;
+
+        font-style: normal;
+        font-size: 20px;
+        line-height: 22px;
+        padding-left: 20px;
+      }
+      .pink{
+        color: #5d4da8;
+        font-weight: bold;
+      }
+      .bussname p {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+      }
+      .wrap {
+        display: flex;
+        /* justify-content: space-around; */
+        width: 100%;
+        gap: 0px;
+      }
+      .sbtnwrap {
+    display: flex;
+
+    align-items: center;
+    gap: 20px;
+}
+      .nav {
+        width: 78px;
+        height: 22px;
+        padding: 30px 0;
+        padding-left: 60px;
+      }
+      .nextBtn {
+        margin-top: 30px;
+        width: 349px;
+        height: 66px;
+        background: #5d4da8;
+        border-radius: 15px;
+        border:none;
+      }
+      .backBtn {
+        background: #d8d8d8;
+        border-radius: 15px;
+        border: none;
+        margin-right: 59px;
+        margin-top: 30px;
+        width: 349px;
+        height: 66px;
+      }
+      .backBtn a {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        width: 75px;
+        height: 29px;
+        color: black;
+      }
+      .nextBtn a {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        width: 75px;
+        height: 29px;
+        color: #ffffff;
+      }
+      p, h2 {
+        margin: 0;
+        padding: 0;
+      }
+      .arrowWrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .arrowIcon{
+        padding-top: 37px;
+        padding-right: 8px;
+      }
+      .bussname {
+        margin-top: 40px;
+      }
+      .label {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #5e5e5e;
+        padding-top: 17px;
+        display: flex;
+        align-items: center;
+        gap: 51px;
+      }
+      label{
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #5e5e5e;
+        /* padding: 20px 88px; */
+      }
+      textarea {
+        width: 502px;
+
+        height: 140px;
+      }
+      .smallBtnN {
+        width: 30px;
+        border: 2px solid #ffffff;
+        height: 30px;
+
+        border-radius: 5px 0px 0px 5px;
+        background-color: #5d4da8;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: larger;
+      }
+      .smallBtnP {
+        width: 30px;
+        border: 2px solid #ffffff;
+        height: 30px;
+        border-radius: 0px 5px 5px 0px;
+        background-color: #5d4da8;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: larger;
+      }
+      .btnwrap {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .proftypeWrap {
+        background-image: url("../css/round-pink-patch.png"),
+          url("../css/yellow-patch-rotated.png");
+          background-position: bottom right -6px, right 60px top -65px;
+        background-repeat: no-repeat;
+        /* background-size: cover; */
+        height: 100%;
+        width: 100%;
+      }
+      .payment,  .duration, .data, .experience{
+        /* font-family: "Lato",sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px; */
+        color: #5E5E5E;
+      }
+      @media only screen and (max-width: 999px) {
+        .sidenav{
+          display: none;
+        }
+    .proftypeWrap{
+      width: auto;
+    }
+    }
+    @media only screen and (max-width: 540px) {
+      textarea{
+        width: 275px;
+      }
+      .nextBtn{
+        width: 100%;
+      }
+      .backBtn{
+        width: 100%;
+      }
+      .label{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .proftypeWrap{
+        width: 100%;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="sidenav">
+        <nav>
+          <img class="nav" src="/css/Yuung White.png" />
+        </nav>
+        <a href="/company/proftype">Type of Profile</a>
+        <a href="/company/profinfo">Profile Information</a>
+        <div class="arrowWrap">
+          <a href="/company/prof">Job Posting</a>
+
+          <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
+        </div>
+        <a href="/company/livejobs">Live Jobs</a>
+        <a href="/company/applications">Applications</a>
+      </div>
+      <div class="proftypeWrap">
+      <div class="container">
+        <div class="sec1">
+          <h2 class="title">Job Posting</h2>
+          <div class="bussname">
+            <p>Job post name</p>
+            <input class="inp" type="text" />
+          </div>
+          <div class="bussname1">
+            <div class="bussname">
+              <div class="btnwrap">
+                <p>No of people wanted</p>
+                <button class="smallBtnN" onclick="dataDec()">-</button>
+                <p id="data" class="data">0</p>
+                <button class="smallBtnP" onclick="dataInc()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="bussname">
+            <p>Job start date</p>
+            <input class="inp pink" type="date" />
+          </div>
+
+          <div class="bussname">
+            <p>Starting time (hh:mm am/pm)</p>
+            <input class="inp pink" type="time" />
+          </div>
+
+          <div class="bussname">
+            <div class="btnwrap">
+              <p>Duration</p>
+              <button class="smallBtnN" onclick="durationDec()">-</button>
+              <p id="duration" class="duration">0</p>
+              <button class="smallBtnP" onclick="durationInc()">+</button>
+            </div>
+          </div>
+
+          <p class="label">
+            Note : Duration of part-time jobs can’t be less than 1 hour and
+            can’t be more than 6 hours
+          </p>
+
+          <div class="bussname">
+            <p>Required experience</p>
+            <div class="btnwrap">
+              <div class="label">
+              <div class="radioWrap"><input type="radio" name="experience" value="No experience" />
+              <label>No experience</label></div>
+              <div class="radioWrap"><input type="radio" name="experience" value="More than" />
+              <label>More than</label></div>
+              <div class="sbtnwrap">
+              <button class="smallBtnN" onclick="experienceDec()">-</button>
+              <p id="experience" class="experience">0</p>
+              <button class="smallBtnP" onclick="experienceInc()">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+          <div class="bussname">
+            <p>Training</p>
+            <div class="label">
+            <div class="radioWrap"><input type="radio" name="training" value="Will be provided" />
+            <label>Will be provided</label></div>
+            <div class="radioWrap"><input type="radio" name="training" value="On job" />
+            <label>On job</label></div></div>
+          </div>
+
+          <div class="bussname">
+            <div class="btnwrap">
+              <p>Payment</p>
+              <button class="smallBtnN" onclick="paymentDec()">-</button>
+              <p id="payment" class="payment">0</p>
+              <button class="smallBtnP" onclick="paymentInc()">+</button>
+            </div>
+          </div>
+
+          <div class="bussname">
+            <p>Mode of payment</p>
+            <div class="label">
+            <div class="radioWrap"><input type="radio" name="payment" value="Cash in hand" />
+            <label>Cash in hand</label></div>
+            <div class="radioWrap"><input type="radio" name="payment" value="Cheque" />
+            <label>Cheque</label></div>
+            <div class="radioWrap"><input type="radio" name="payment" value="Bank transfer" />
+            <label>Bank transfer</label></div>
+          </div></div>
+
+          <div class="bussname">
+            <p>Job description</p>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+          </div>
+
+          <div class="bussname">
+            <p>Perks</p>
+            <div class="label">
+            <div class="radioWrap"><input type="checkbox" value="Food" />
+            <label>Food</label></div>
+            <div class="radioWrap"> <input type="checkbox" value="Drinks" />
+            <label>Drinks</label></div>
+            <div class="radioWrap"> <input type="checkbox" value="Certificate" />
+            <label>Certificate</label></div>
+            <div class="radioWrap"> <input type="checkbox" value="Opportunity to learn a new skill" />
+            <label>Opportunity to learn a new skill</label>
+          </div></div></div>
+          <button type="submit" class="backBtn">
+            <a>Back</a>
+          </button>
+          <button type="submit" class="nextBtn">
+            <a>Next</a>
+          </button>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script>
+      let payment = 0;
+      let data = 0;
+      let duration = 0;
+      let experience = 0;
+      function paymentDec() {
+        if (payment > 0) {
+          payment = payment - 100;
+          document.getElementById("payment").innerHTML = payment;
+        }
+      }
+      function paymentInc() {
+        payment = payment + 100;
+        document.getElementById("payment").innerHTML = payment;
+      }
+
+      function dataDec() {
+        if (data > 0) {
+          data--;
+          document.getElementById("data").innerHTML = data;
+        }
+      }
+      function dataInc() {
+        data++;
+        document.getElementById("data").innerHTML = data;
+      }
+
+      function durationDec() {
+        if (duration > 0) {
+          duration--;
+          document.getElementById("duration").innerHTML = duration;
+        }
+      }
+      function durationInc() {
+        duration++;
+        document.getElementById("duration").innerHTML = duration;
+      }
+
+      function experienceDec() {
+        if (experience > 0) {
+          experience--;
+          document.getElementById("experience").innerHTML = experience;
+        }
+      }
+      function experienceInc() {
+        experience++;
+        document.getElementById("experience").innerHTML = experience;
+      }
+    </script>
+  </body>
+</html>

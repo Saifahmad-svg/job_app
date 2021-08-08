@@ -1,0 +1,28 @@
+const mongoose = require("mongoose");
+const jobDetailsSchema = new mongoose.Schema({
+    userNumber : Number,
+    postName : String,
+    noOfPersons : Number,
+    jobDays : Number,
+    startDate: Date,
+    startTime: mongoose.Schema.Types.Decimal128,
+    duration : Number,
+    reportTime : mongoose.Schema.Types.Decimal128,
+    requiredExperience : String,
+    training : String,
+    payment : Number,
+    paymentMode: String,
+    jobDescription : String,
+    perks: String,
+    applicants :{
+        type : []
+    },
+    hired :{
+        type : []
+    }
+})
+
+//Create New Collection
+const jobDetails = new mongoose.model('Job',jobDetailsSchema);
+
+ module.exports = jobDetails;
