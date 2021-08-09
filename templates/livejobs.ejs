@@ -16,7 +16,7 @@
        .sidenav {
         width: 350px;
         height: 100vh;
-        position: relative;
+        position: fixed;
         z-index: 1;
         background: #5d4da8;
         /* box-shadow: 4px 0px 4px rgb(221 221 221 / 25%); */
@@ -31,7 +31,7 @@
       }
         .sidenav a {
             padding: 37px 8px 6px 70px;
-            width: 350px;
+            /* width: 350px; */
             height: 31px;
             text-decoration: none;
             font-size: 25px;
@@ -44,10 +44,12 @@
             display: block;
         }
         .container {
-        width: auto;
-        padding-left: 32px;
-        padding-right: 32px;
-        padding-top: 106px;
+          width: auto;
+          /* padding-left: 482px; */
+          padding-top: 143px;
+          padding-right: 32px;
+          margin-left: 490px;
+          zoom: 0.8;
         }
         .container h2{
             width: 725px;
@@ -112,8 +114,8 @@
             background-image: url(../css/full-pink-patch.png), url(../css/yellow-patch-rotated.png);
             background-position: bottom left -242px, right 60px top -65px;
             background-repeat: no-repeat;
-            height: 100vh;
-         
+            height: 100%;
+            width: 950px;
       }
       p , h2{
           margin: 0;
@@ -149,7 +151,7 @@
         <a href="/company/profinfo">Profile Information</a>
         <a href="/company/jobposting">Job Posting</a>
         <div class="arrowWrap">
-            <a href="/company/prof">Live Jobs</a>
+            <a href="/company/livejobs">Live Jobs</a>
   
             <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
           </div>
@@ -172,18 +174,12 @@
           <% records.forEach(function(data) {%>
         <tr>
             <td><%= data.postName%></td>
-            <td>Smith</td>
-            <td>50</td>
-            <td><a href="/company/delete">Delete</a></td>
+            <td><%= data.startDate.toLocaleDateString()%></td>
+            <td><%= data.startTime%></td>
+            <td><a href="/company/delete/<%= data._id%>">Delete</a></td>
         </tr>
         <%}) %>
     
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-            <td><a href="/company/delete">Delete</a></td>
-          </tr>
 
 </table>
     </div>

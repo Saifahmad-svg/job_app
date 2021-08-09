@@ -21,7 +21,7 @@
       .sidenav {
         width: 350px;
         height: 116vh;
-        position: relative;
+        position: fixed;
         z-index: 1;
         background: #5d4da8;
         /* box-shadow: 4px 0px 4px rgb(221 221 221 / 25%); */
@@ -31,7 +31,7 @@
 
       .sidenav a {
         padding: 37px 8px 6px 70px;
-        width: 350px;
+        /* width: 350px; */
         height: 31px;
         text-decoration: none;
         font-size: 25px;
@@ -68,7 +68,8 @@
       }
       .container {
         width: auto;
-        padding-left: 32px;
+        padding-left: 395px;
+        padding-top: 20px;
         padding-right: 32px;
       }
       .proftypeWrap {
@@ -252,6 +253,12 @@
       /* .router {
         display: none;
       } */
+      table{
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+
+      }
       @media only screen and (max-width: 1024px) {
         .subsec2 {
           display: flex;
@@ -422,7 +429,7 @@
               </div>
               <div class="bussname">
                 <p>Business incorporation certificate</p>
-                <input type="file" name="businessIncorporationCertificate" multiple/>
+                <input type="file" name="businessIncorporationCertificate" value="bulli" multiple/>
                 <a class="upload" href="#"> Upload</a>
               </div>
             </div>

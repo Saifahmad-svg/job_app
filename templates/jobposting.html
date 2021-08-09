@@ -21,7 +21,7 @@
       .sidenav {
         width: 350px;
         height: 100vh;
-        position: relative;
+        position: fixed;
         z-index: 1;
         background: #5d4da8;
         /* box-shadow: 4px 0px 4px rgb(221 221 221 / 25%); */
@@ -31,7 +31,7 @@
 
       .sidenav a {
         padding: 37px 8px 6px 70px;
-        width: 350px;
+        /* width: 350px; */
         height: 31px;
         text-decoration: none;
         font-size: 25px;
@@ -57,7 +57,8 @@
       }
       .container {
         width: auto;
-        padding-left: 32px;
+        padding-left: 395px;
+        padding-top: 33px;
         padding-right: 32px;
       }
       .sec1 {
@@ -95,12 +96,15 @@
       }
       .data{
         border: none!important;
-        width: 27px;
+        /* width: 27px; */
         font-family: "Lato", sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
         line-height: 22px;
+        text-align: center;
+        min-width: 40px;
+        max-width: 55px;
       }
       .wrap {
         display: flex;
@@ -112,7 +116,7 @@
     display: flex;
 
     align-items: center;
-    gap: 20px;
+    /* gap: 20px; */
 }
       .nav {
         width: 78px;
@@ -210,6 +214,10 @@
         font-weight: bold;
         font-size: larger;
       }
+      .databtn{
+        display: flex;
+        align-items: center;
+      }
       .smallBtnP {
         width: 30px;
         border: 2px solid #ffffff;
@@ -224,6 +232,11 @@
         display: flex;
         align-items: center;
         gap: 15px;
+      }
+      .paybtn{
+        display: flex;
+        align-items: center;
+
       }
       .proftypeWrap {
         background-image: url("../css/round-pink-patch.png"),
@@ -309,12 +322,14 @@
             <div class="bussname">
               <div class="btnwrap">
                 <p>No of people wanted</p>
+                <div class="databtn">
                 <button type="button" class="smallBtnN" onclick="dataDec()">-</button>
                 <input class="data" id="data" name="noOfPersons" type="number" min="0" value="0">
                 <!-- <p id="data" class="data">0</p> -->
                 <button type="button" class="smallBtnP" onclick="dataInc()">+</button>
               </div>
             </div>
+          </div>
           </div>
           <div class="bussname">
             <p>Job start date</p>
@@ -329,10 +344,12 @@
           <div class="bussname">
             <div class="btnwrap">
               <p>Duration</p>
+              <div class="databtn">
               <button type="button" class="smallBtnN" onclick="durationDec()">-</button>
               <input class="data" id="duration" name="duration" type="number" min="0" value="0">
               <button type="button" class="smallBtnP" onclick="durationInc()">+</button>
             </div>
+          </div>
           </div>
 
           <p class="label">
@@ -370,10 +387,12 @@
           <div class="bussname">
             <div class="btnwrap">
               <p>Payment</p>
+              <div class="paybtn">
               <button type="button" class="smallBtnN" onclick="paymentDec()">-</button>
               <input class="data" id="payment" name="payment" type="number" min="100" value="0" step="100">
               <button type="button" class="smallBtnP" onclick="paymentInc()">+</button>
             </div>
+          </div>
           </div>
 
           <div class="bussname">

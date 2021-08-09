@@ -141,9 +141,11 @@ router.post('/newuser',upload.any({name :'userIdentification[]', maxcount:3},{na
         email : req.body.email,
         qualification : req.body.qualification,
         experienceYears : req.body.experienceYears,
-        skills : req.body.skills
+        skills : req.body.skills,
+        location: req.body.location
     })
 
+    if(req.files){
     let path =""
     let way =""
     let img =""
@@ -164,7 +166,7 @@ router.post('/newuser',upload.any({name :'userIdentification[]', maxcount:3},{na
     user.userIdentification = path
     user.userDrivingLicense = way
     user.userDrivingLicense = img
-
+}
     user.save().then(() => {
         res.send("saved new profile");
     }).catch((e) =>{

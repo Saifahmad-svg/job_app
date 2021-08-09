@@ -60,12 +60,7 @@ router.get("/jobposting", (req, res) => {
   res.render("jobposting.html");
 });
 
-router.get("/applications", (req, res) => {
-  res.render("applications");
-});
-router.get("/applicants", (req, res) => {
-  res.render("applicants");
-});
+
 router.get("/authentication", (req, res) => {
   res.render("auth.html");
 });
@@ -186,7 +181,7 @@ router.post("/jobdetails", (req, res) => {
   jobdetails
     .save()
     .then(() => {
-      res.render('livejobs');
+      res.redirect('livejobs');
     })
     .catch((e) => {
       res.send(e);
@@ -195,19 +190,60 @@ router.post("/jobdetails", (req, res) => {
 });
 
 router.get("/livejobs", (req, res) => {
-  jobDetails.find({}).exec(function (err, data) {
+  let userNumber = req.session.User.userNumber;
+  jobDetails.find({userNumber}).exec(function (err, data) {
     if (err) throw err;
     res.render('livejobs',{records:data})
   });
 });
 
 // here id should be of jobdetails
-router.post("/delete/:id", (req, res) => {
+router.get("/delete/:id", (req, res) => {
   let id = mongoose.Types.ObjectId(req.params.id);
   jobDetails.findByIdAndDelete(id).exec(function (err, data) {
     if (err) throw err;
-    res.send("Job deleted");
+    res.redirect('/company/livejobs');
   });
+});
+
+router.get("/applications", (req, res) => {
+  let userNumber = req.session.User.userNumber;
+  jobDetails.find({userNumber}).exec(function (err, data) {
+    if (err) throw err;
+    res.render('applications',{records:data})
+  });
+});
+
+router.get("/applicants", async(req, res) => {
+  let userNumber = req.session.User.userNumber;
+
+  // let applicants = await jobDetails.find({ userNumber : { $in: userNumber }})
+  // console.log(applicants)
+
+   jobDetails.find({userNumber}).exec(function (err, data) {
+    if (err) throw err;
+    console.log(data)
+    let docs= data.forEach(function(docs){
+      return docs.applicants;
+    }) 
+    
+    res.render('applicants',{records:data})
+  });
+
+  // jobDetails.find({userNumber}).exec(function (err, data) {
+  //   if (err) throw err;
+  //   data.forEach(function(docs){
+  //     let applicants = docs.applicants
+  //     applicants.forEach(function(applicantData){
+  //       console.log(applicantData)
+  //       newUser.find({_id:applicantData}).exec(function (err, fdata) {
+  //           res.render('applicants',{records:data,user:fdata})
+  //     })
+  //   })
+  //   })
+  // });
+
+
 });
 
 // here :id should be of jobdetails id

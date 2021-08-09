@@ -16,7 +16,7 @@
         .sidenav {
         width: 350px;
         height: 100vh;
-        position: relative;
+        position: fixed;
         z-index: 1;
         background: #5d4da8;
         /* box-shadow: 4px 0px 4px rgb(221 221 221 / 25%); */
@@ -40,9 +40,10 @@
         }
         .container {
         width: auto;
-        padding-left: 32px;
         padding-right: 32px;
         padding-top: 106px;
+        padding-left: 395px;
+        padding-top: 111px;
         }
         .container h2{
             width: 725px;
@@ -266,41 +267,42 @@
         <h2>Applicants</h2>
         <p class="label">Total applicants - 5  </p>
         <div class="head">
+            <% records.forEach(function(data,fdata) {%>
             <div class="subhead">
                 <h3>Job name -</h3>
-                <p> Bartender</p>
+                <p> <%= data.postName%></p>
             </div>
             <div class="subhead">
                 <h3>Job date -</h3>
-                <p>27/07/2021</p>
+                <p><%= data.startDate.toLocaleDateString()%></p>
             </div>
             <div class="subhead">
                 <h3>Job time -</h3>
-                <p>6:00 PM</p>
+                <p><%= data.startTime%></p>
             </div>
         </div>
         <hr>
-
+        
         <div class="info">
             <div class="infohead">
                 <h3>Full name</h3>
                 <p>:</p>
-                <p>Ayaan</p>
+                <p><%= data.fname%> <%= data.mname%> <%= data.lname%></p>
             </div>
             <div class="infohead">
                 <h3>Experience(in years)</h3>
                 <p>:</p>
-                <p>2</p>
+                <p><%= data.experienceYears%></p>
             </div>
             <div class="infohead">
                 <h3>Location(city)</h3>
                 <p>:</p>
-                <p>Area 51</p>
+                <p><%= data.location %></p>
             </div>
             <div class="infohead">
                 <h3>Mobile no. :</h3>
                 <p>:</p>
-                <p>9876543210</p>
+                <p><%= data.userNumber%></p>
                 <div class="btnwrap">
                 <button class="hire">Hire</button>
                 <button class="reject">Reject</button>
@@ -308,6 +310,7 @@
         </div>
         </div>
         <hr>
+        <%}) %>
     </div>
     </div>
     </div>

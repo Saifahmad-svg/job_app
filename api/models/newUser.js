@@ -35,6 +35,7 @@ const newUserSchema = new mongoose.Schema({
         }
     },
     qualification: String,
+    location : String,
     experienceYears : {
         type : Number
     },
@@ -43,7 +44,7 @@ const newUserSchema = new mongoose.Schema({
     },
     userIdentification: {
         type: String,
-        required : true
+        // required : true
     },
     userDrivingLicense: {
         type: String

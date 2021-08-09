@@ -16,7 +16,7 @@
           .sidenav {
         width: 350px;
         height: 100vh;
-        position: relative;
+        position: fixed;
         z-index: 1;
         background: #5d4da8;
         /* box-shadow: 4px 0px 4px rgb(221 221 221 / 25%); */
@@ -26,7 +26,7 @@
 
         .sidenav a {
             padding: 37px 8px 6px 70px;
-            width: 350px;
+            /* width: 350px; */
             height: 31px;
             text-decoration: none;
             font-size: 25px;
@@ -39,10 +39,13 @@
             display: block;
         }
         .container {
-        width: auto;
-        padding-left: 44px;
-        padding-right: 44px;
-      }
+          width: auto;
+          /* padding-left: 482px; */
+          padding-top: 10px;
+          padding-right: 32px;
+          margin-left: 525px;
+          zoom: 0.75;
+          }
         .container h2{
             width: 725px;
             height: 58px;
@@ -160,7 +163,7 @@
         <a href="/company/jobposting">Job Posting</a>
         <a href="/company/livejobs">Live Jobs</a>
         <div class="arrowWrap">
-            <a href="/company/prof">Applications</a>
+            <a href="/company/applications">Applications</a>
   
             <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
           </div>
@@ -182,22 +185,15 @@
             <th>Action</th>
 
         </tr>
-        <tr>
-            <td>Jill</td>
-            <td>27/07/2021</td>
-            <td>9:00AM</td>
-            <td>5</td>
+        <% records.forEach(function(data) {%>
+          <tr>
+              <td><%= data.postName%></td>
+              <td><%= data.startDate.toLocaleDateString()%></td>
+              <td><%= data.startTime%></td>
+              <td><%= data.applicants.length%></td>
             <td><a href="/company/applicants">View</a></td>
         </tr>
-    
-          <tr>
-            <td>Eve</td>
-            <td>27/08/2021</td>
-            <td>6:00 AM</td>
-            <td>2</td>
-            <td><a href="/company/applicants">View</a></td>
-          </tr>
-
+        <%}) %>
 </table>
     </div>
     </div>
