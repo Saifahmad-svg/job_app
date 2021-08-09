@@ -158,24 +158,25 @@
       <div class="proftypeWrap">
     <div class="container">
         <h2>Live Jobs</h2>
-
+        
         <table>
-        <!-- <div class="sec1">
+          <!-- <div class="sec1">
             <h3 class="address">Job name</h3>
-        </div> -->
-
-        <tr>
+          </div> -->
+          <tr>
             <th>Job name</th>
             <th>Job date</th>
             <th>Job time</th>
             <th>Action</th>
-        </tr>
+          </tr>
+          <% records.forEach(function(data) {%>
         <tr>
-            <td>Jill</td>
+            <td><%= data.postName%></td>
             <td>Smith</td>
             <td>50</td>
             <td><a href="/company/delete">Delete</a></td>
         </tr>
+        <%}) %>
     
           <tr>
             <td>Eve</td>

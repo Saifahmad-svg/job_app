@@ -93,6 +93,15 @@
         font-size: 18px;
         line-height: 22px;
       }
+      .data{
+        border: none!important;
+        width: 27px;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+      }
       .wrap {
         display: flex;
         /* justify-content: space-around; */
@@ -233,6 +242,16 @@
         line-height: 22px; */
         color: #5E5E5E;
       }
+
+      input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+      }
+
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+
       @media only screen and (max-width: 999px) {
         .sidenav{
           display: none;
@@ -279,38 +298,40 @@
       </div>
       <div class="proftypeWrap">
       <div class="container">
+        <form action="/company/jobdetails" method="POST">
         <div class="sec1">
           <h2 class="title">Job Posting</h2>
           <div class="bussname">
             <p>Job post name</p>
-            <input class="inp" type="text" />
+            <input class="inp" type="text" name="postName"/>
           </div>
           <div class="bussname1">
             <div class="bussname">
               <div class="btnwrap">
                 <p>No of people wanted</p>
-                <button class="smallBtnN" onclick="dataDec()">-</button>
-                <p id="data" class="data">0</p>
-                <button class="smallBtnP" onclick="dataInc()">+</button>
+                <button type="button" class="smallBtnN" onclick="dataDec()">-</button>
+                <input class="data" id="data" name="noOfPersons" type="number" min="0" value="0">
+                <!-- <p id="data" class="data">0</p> -->
+                <button type="button" class="smallBtnP" onclick="dataInc()">+</button>
               </div>
             </div>
           </div>
           <div class="bussname">
             <p>Job start date</p>
-            <input class="inp pink" type="date" />
+            <input class="inp pink" type="date" name="startDate"/>
           </div>
 
           <div class="bussname">
             <p>Starting time (hh:mm am/pm)</p>
-            <input class="inp pink" type="time" />
+            <input class="inp pink" type="time" name="startTime"/>
           </div>
 
           <div class="bussname">
             <div class="btnwrap">
               <p>Duration</p>
-              <button class="smallBtnN" onclick="durationDec()">-</button>
-              <p id="duration" class="duration">0</p>
-              <button class="smallBtnP" onclick="durationInc()">+</button>
+              <button type="button" class="smallBtnN" onclick="durationDec()">-</button>
+              <input class="data" id="duration" name="duration" type="number" min="0" value="0">
+              <button type="button" class="smallBtnP" onclick="durationInc()">+</button>
             </div>
           </div>
 
@@ -323,14 +344,14 @@
             <p>Required experience</p>
             <div class="btnwrap">
               <div class="label">
-              <div class="radioWrap"><input type="radio" name="experience" value="No experience" />
+              <div class="radioWrap"><input type="radio" name="requiredExperience" value="No experience" />
               <label>No experience</label></div>
-              <div class="radioWrap"><input type="radio" name="experience" value="More than" />
+              <div class="radioWrap"><input type="radio" name="requiredExperience" value="More than" />
               <label>More than</label></div>
               <div class="sbtnwrap">
-              <button class="smallBtnN" onclick="experienceDec()">-</button>
-              <p id="experience" class="experience">0</p>
-              <button class="smallBtnP" onclick="experienceInc()">+</button>
+              <button type="button" class="smallBtnN" onclick="experienceDec()">-</button>
+              <input class="data" id="experience" name="requiredExperience" type="number" min="0" value="0">
+              <button type="button" class="smallBtnP" onclick="experienceInc()">+</button>
             </div>
           </div>
         </div>
@@ -349,47 +370,48 @@
           <div class="bussname">
             <div class="btnwrap">
               <p>Payment</p>
-              <button class="smallBtnN" onclick="paymentDec()">-</button>
-              <p id="payment" class="payment">0</p>
-              <button class="smallBtnP" onclick="paymentInc()">+</button>
+              <button type="button" class="smallBtnN" onclick="paymentDec()">-</button>
+              <input class="data" id="payment" name="payment" type="number" min="100" value="0" step="100">
+              <button type="button" class="smallBtnP" onclick="paymentInc()">+</button>
             </div>
           </div>
 
           <div class="bussname">
             <p>Mode of payment</p>
             <div class="label">
-            <div class="radioWrap"><input type="radio" name="payment" value="Cash in hand" />
+            <div class="radioWrap"><input type="radio" name="paymentMode" value="Cash in hand" />
             <label>Cash in hand</label></div>
-            <div class="radioWrap"><input type="radio" name="payment" value="Cheque" />
+            <div class="radioWrap"><input type="radio" name="paymentMode" value="Cheque" />
             <label>Cheque</label></div>
-            <div class="radioWrap"><input type="radio" name="payment" value="Bank transfer" />
+            <div class="radioWrap"><input type="radio" name="paymentMode" value="Bank transfer" />
             <label>Bank transfer</label></div>
           </div></div>
 
           <div class="bussname">
             <p>Job description</p>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea name="jobDescription" cols="30" rows="10"></textarea>
           </div>
 
           <div class="bussname">
             <p>Perks</p>
             <div class="label">
-            <div class="radioWrap"><input type="checkbox" value="Food" />
+            <div class="radioWrap"><input type="checkbox" name="perks" value="Food" />
             <label>Food</label></div>
-            <div class="radioWrap"> <input type="checkbox" value="Drinks" />
+            <div class="radioWrap"> <input type="checkbox" name="perks" value="Drinks" />
             <label>Drinks</label></div>
-            <div class="radioWrap"> <input type="checkbox" value="Certificate" />
+            <div class="radioWrap"> <input type="checkbox" name="perks" value="Certificate" />
             <label>Certificate</label></div>
-            <div class="radioWrap"> <input type="checkbox" value="Opportunity to learn a new skill" />
+            <div class="radioWrap"> <input type="checkbox" name="perks" value="Opportunity to learn a new skill" />
             <label>Opportunity to learn a new skill</label>
           </div></div></div>
           <button type="submit" class="backBtn">
             <a>Back</a>
           </button>
-          <button type="submit" class="nextBtn">
+          <button class="nextBtn">
             <a>Next</a>
           </button>
         </div>
+      </form>
       </div>
       </div>
     </div>
@@ -399,47 +421,31 @@
       let duration = 0;
       let experience = 0;
       function paymentDec() {
-        if (payment > 0) {
-          payment = payment - 100;
-          document.getElementById("payment").innerHTML = payment;
-        }
+        document.getElementById("payment").stepDown();  
       }
       function paymentInc() {
-        payment = payment + 100;
-        document.getElementById("payment").innerHTML = payment;
+        document.getElementById("payment").stepUp();
       }
 
       function dataDec() {
-        if (data > 0) {
-          data--;
-          document.getElementById("data").innerHTML = data;
-        }
+          document.getElementById("data").stepDown();  
       }
-      function dataInc() {
-        data++;
-        document.getElementById("data").innerHTML = data;
+      function dataInc() {  
+        document.getElementById("data").stepUp();
       }
 
       function durationDec() {
-        if (duration > 0) {
-          duration--;
-          document.getElementById("duration").innerHTML = duration;
-        }
+        document.getElementById("duration").stepDown();  
       }
       function durationInc() {
-        duration++;
-        document.getElementById("duration").innerHTML = duration;
+        document.getElementById("duration").stepUp();
       }
 
       function experienceDec() {
-        if (experience > 0) {
-          experience--;
-          document.getElementById("experience").innerHTML = experience;
-        }
+        document.getElementById("experience").stepDown();  
       }
       function experienceInc() {
-        experience++;
-        document.getElementById("experience").innerHTML = experience;
+        document.getElementById("experience").stepUp();
       }
     </script>
   </body>

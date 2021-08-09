@@ -33,7 +33,7 @@ router.post("/register", async (req, res) => {
       req.session.User = {
         userNumber,
       };
-      res.render("sms.html");
+      res.redirect('/company/smsAuthentication');
     } else {
       if (existUser.length !== 0) {
         res.send(
@@ -59,9 +59,7 @@ router.get("/proftype", (req, res) => {
 router.get("/jobposting", (req, res) => {
   res.render("jobposting.html");
 });
-router.get("/livejobs", (req, res) => {
-  res.render("livejobs");
-});
+
 router.get("/applications", (req, res) => {
   res.render("applications");
 });
@@ -85,7 +83,7 @@ router.post("/proftype", (req, res) => {
     userNumber,
     jobType,
   };
-  res.render('profinfo');
+  res.redirect('/company/profinfo');
 });
 
 router.use(express.static(__dirname + "./public/"));
@@ -135,9 +133,10 @@ router.post("/profinfo",upload.any(
         pincode: req.body.pincode,
       },
       businessContactNumber: userNumber,
-      businessNature: req.body.selectpicker,
+      businessNature: req.body.businessNature,
     });
 
+    if (req.files){
     let path = "";
     let way = "";
     req.files.forEach(function (files, index, arr) {
@@ -154,15 +153,17 @@ router.post("/profinfo",upload.any(
     way = way.substring(0, way.lastIndexOf(","));
     user.businessPhoto = path;
     user.businessIncorporationCertificate = way;
+  }
 
     user
       .save()
       .then(() => {
-        res.render('jobposting', {number : userNumber});
+        res.render('jobposting.html', {number : userNumber});
       })
       .catch((e) => {
         res.send(e);
       });
+    
   });
 
 router.post("/jobdetails", (req, res) => {
@@ -185,7 +186,7 @@ router.post("/jobdetails", (req, res) => {
   jobdetails
     .save()
     .then(() => {
-      res.send("saved job details");
+      res.render('livejobs');
     })
     .catch((e) => {
       res.send(e);
@@ -196,7 +197,7 @@ router.post("/jobdetails", (req, res) => {
 router.get("/livejobs", (req, res) => {
   jobDetails.find({}).exec(function (err, data) {
     if (err) throw err;
-    res.send(data);
+    res.render('livejobs',{records:data})
   });
 });
 
