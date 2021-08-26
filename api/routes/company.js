@@ -214,37 +214,21 @@ router.get("/applications", (req, res) => {
   });
 });
 
-router.get("/applicants", async(req, res) => {
+router.get("/applicants/:id", async(req, res) => {
   let userNumber = req.session.User.userNumber;
+  let id = mongoose.Types.ObjectId(req.params.id);
 
-  // let applicants = await jobDetails.find({ userNumber : { $in: userNumber }})
-  // console.log(applicants)
+    let applicant =await jobDetails.find(id);
+    // console.log(applicant)
 
-   jobDetails.find({userNumber}).exec(function (err, data) {
-    if (err) throw err;
-    console.log(data)
-    let docs= data.forEach(function(docs){
-      return docs.applicants;
-    }) 
-    
-    res.render('applicants',{records:data})
+   let appData =await applicant.forEach(async function(docs){
+      applicants=await docs.applicants;
+
+      let applicantData =await newUser.find({ _id: { $in: applicants } });
+      // console.log(applicantData)
+      res.render('applicants',{records:applicant,record:applicantData});
+    })
   });
-
-  // jobDetails.find({userNumber}).exec(function (err, data) {
-  //   if (err) throw err;
-  //   data.forEach(function(docs){
-  //     let applicants = docs.applicants
-  //     applicants.forEach(function(applicantData){
-  //       console.log(applicantData)
-  //       newUser.find({_id:applicantData}).exec(function (err, fdata) {
-  //           res.render('applicants',{records:data,user:fdata})
-  //     })
-  //   })
-  //   })
-  // });
-
-
-});
 
 // here :id should be of jobdetails id
 router.get("/application/:id", async (req, res) => {
@@ -261,7 +245,7 @@ router.get("/application/:id", async (req, res) => {
 });
 
 // here :id should be of jobdetails id and jobseekers id will be fetch from body
-router.post("/hire/:id", (req, res) => {
+router.get("/hire/:id", (req, res) => {
   let id = mongoose.Types.ObjectId(req.params.id);
   let userId = req.body.userId;
   jobDetails
@@ -275,5 +259,6 @@ router.post("/hire/:id", (req, res) => {
     .exec(function (err, docs) {
       if (err) throw err;
     });
+    console.log("Hire")
 });
 module.exports = router;

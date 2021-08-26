@@ -258,16 +258,16 @@
         <a href="/company/applications">Applications</a>
         <div class="arrowWrap">
             <img src="/css/Rectangle.png" alt="arrow" class=" rect" />
-            <a href="/company/applicants" class="applicants uapplicants">Applicants</a>  
+            <a class="applicants uapplicants">Applicants</a>  
             <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
           </div>
       </div>
       <div class="proftypeWrap">
     <div class="container">
         <h2>Applicants</h2>
-        <p class="label">Total applicants - 5  </p>
+        <% records.forEach(function(data) {%>
+        <p class="label">Total applicants - <%= data.applicants.length%> </p>
         <div class="head">
-            <% records.forEach(function(data,fdata) {%>
             <div class="subhead">
                 <h3>Job name -</h3>
                 <p> <%= data.postName%></p>
@@ -282,34 +282,37 @@
             </div>
         </div>
         <hr>
+        <% record.forEach(function(applicantData) {%>
         
         <div class="info">
             <div class="infohead">
                 <h3>Full name</h3>
                 <p>:</p>
-                <p><%= data.fname%> <%= data.mname%> <%= data.lname%></p>
+                <p><%= applicantData.fname%> <%= applicantData.mname%> <%= applicantData.lname%></p>
             </div>
             <div class="infohead">
                 <h3>Experience(in years)</h3>
                 <p>:</p>
-                <p><%= data.experienceYears%></p>
+                <p><%= applicantData.experienceYears%></p>
             </div>
             <div class="infohead">
                 <h3>Location(city)</h3>
                 <p>:</p>
-                <p><%= data.location %></p>
+                <p><%= applicantData.location %></p>
             </div>
             <div class="infohead">
                 <h3>Mobile no. :</h3>
                 <p>:</p>
-                <p><%= data.userNumber%></p>
+                <p><%= applicantData.userNumber%></p>
                 <div class="btnwrap">
-                <button class="hire">Hire</button>
+                <button class="hire"><a href="/company/hire/<%= data._id%>">Hire</a></button>
                 <button class="reject">Reject</button>
             </div>
         </div>
         </div>
         <hr>
+     
+        <%}) %>
         <%}) %>
     </div>
     </div>

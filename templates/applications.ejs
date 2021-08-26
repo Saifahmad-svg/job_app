@@ -191,7 +191,7 @@
               <td><%= data.startDate.toLocaleDateString()%></td>
               <td><%= data.startTime%></td>
               <td><%= data.applicants.length%></td>
-            <td><a href="/company/applicants">View</a></td>
+            <td><a href="/company/applicants/<%= data._id%>">View</a></td>
         </tr>
         <%}) %>
 </table>
