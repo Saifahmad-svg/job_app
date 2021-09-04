@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Applications</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
+      body {
         margin: 0;
         padding: 0;
       }
-          .sidenav {
+      .sidenav {
         width: 350px;
         height: 100vh;
         position: fixed;
@@ -24,116 +27,135 @@
         /* padding-top: 20px;*/
       }
 
-        .sidenav a {
-            padding: 37px 8px 6px 70px;
-            /* width: 350px; */
-            height: 31px;
-            text-decoration: none;
-            font-size: 25px;
-            font-family: "Lato", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 26px;
-            line-height: 31px;
-            color: #FFFFFF;
-            display: block;
-        }
-        .container {
-          width: auto;
-          /* padding-left: 482px; */
-          padding-top: 10px;
-          padding-right: 32px;
-          margin-left: 525px;
-          zoom: 0.75;
-          }
-        .container h2{
-            width: 725px;
-            height: 58px;
-            font-family: "Lato", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 48px;
-            line-height: 58px;
-            color: #5D4DA8;
-        }
-        .arrowWrap {
+      .sidenav a {
+        padding: 37px 8px 6px 70px;
+        /* width: 350px; */
+        height: 31px;
+        text-decoration: none;
+        font-size: 25px;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 26px;
+        line-height: 31px;
+        color: #ffffff;
+        display: block;
+      }
+      .container {
+        width: auto;
+        /* padding-left: 482px; */
+        padding-top: 117px;
+        padding-right: 32px;
+        margin-left: 525px;
+
+        zoom: 0.75;
+      }
+      .container h2 {
+        width: 725px;
+        height: 58px;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 58px;
+        color: #5d4da8;
+      }
+      .arrowWrap {
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
-      .arrowIcon{
+      .arrowIcon {
         padding-top: 37px;
         padding-right: 8px;
       }
+      .hide{
+          display: none;
+      }
       .proftypeWrap {
-        background-image: url(../css/rotated-orange-patch.png), url(../css/yellow-patch-rotated.png);
+        background-image: url(../css/rotated-orange-patch.png),
+          url(../css/yellow-patch-rotated.png);
         background-position: bottom right -30px, right 60px top -65px;
         background-repeat: no-repeat;
         /* background-size: cover; */
         /* height: 100%; */
-        padding-top: 107px;
+
+        height: 100vh;
         width: auto;
       }
       .wrap {
-        display: flex;
+        /* display: flex; */
         /* justify-content: space-around; */
         width: 100%;
         gap: 0px;
       }
-        .nav{
+      .nav {
         width: 78px;
         height: 22px;
         padding: 30px 0;
         padding-left: 60px;
-        }
- 
-        .totalPost{
-          padding-top: 34px;
-          font-family: "Lato",sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 22px;
-            padding-top: 52px;
-            line-height: 26px;
-            color: #909090;
-        }
-        th{
-            font-family: "Lato",sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 25px;
-            line-height: 30px;
-        }
-        td, th{
-            padding : 38px 124px 25px 0;
-        }
-        td{
-            font-family: "Lato",sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 18px;
-            line-height: 22px;
-           
-            color: #5E5E5E;
-            padding-top: 38px;
-            border-top: 1px solid #EBEBEB;
-            text-align: center;
-        }
-        td a{
-            color: #5D4DA8;
-        }
-        tr.bordered td{
-            border-bottom: 1px solid #000;
-        }
-        table{
-            border-collapse: collapse;
-        }
-        h2, p{
-          padding: 0;
-          margin: 0;
-        }
-        @media only screen and (max-width: 999px) {
-          .sidenav {
+      }
+
+      .totalPost {
+        padding-top: 34px;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        padding-top: 52px;
+        line-height: 26px;
+        color: #909090;
+      }
+      th {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 30px;
+      }
+      td,
+      th {
+        padding: 38px 124px 25px 0;
+      }
+      td {
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+        color: #5e5e5e;
+        padding-top: 38px;
+        border-top: 1px solid #ebebeb;
+        text-align: center;
+      }
+      td button {
+        color: #5d4da8;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+        /* color: #5e5e5e; */
+        /* padding-top: 38px; */
+        /* border-top: 1px solid #ebebeb; */
+        border: none;
+        text-align: center;
+        background: none;
+        cursor: pointer;
+      }
+      tr.bordered td {
+        border-bottom: 1px solid #000;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      h2,
+      p {
+        padding: 0;
+        margin: 0;
+      }
+      @media only screen and (max-width: 999px) {
+        .sidenav {
           display: none;
         }
         .container {
@@ -149,54 +171,56 @@
         .proftypeWrap {
           height: 1400px;
         }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrap">
-    <div class="sidenav">
+      <div class="sidenav">
         <nav>
-            <img class="nav" src="/css/Yuung White.png"> 
+          <img class="nav" src="/css/Yuung White.png" />
         </nav>
         <a href="/company/proftype">Type of Profile</a>
         <a href="/company/profinfo">Profile Information</a>
         <a href="/company/jobposting">Job Posting</a>
         <a href="/company/livejobs">Live Jobs</a>
         <div class="arrowWrap">
-            <a href="/company/applications">Applications</a>
-  
-            <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
-          </div>
+          <a href="/company/applications">Applications</a>
+
+          <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
+        </div>
       </div>
       <div class="proftypeWrap">
-    <div class="container">
-        <h2>Applications</h2>
-        <p class="totalPost">Total job posts - 2  </p>
-        <table>
-        <!-- <div class="sec1">
+        <div class="container">
+          <h2>Applications</h2>
+          <p class="totalPost">Total job posts - 2</p>
+          <table>
+            <!-- <div class="sec1">
             <h3 class="address">Job name</h3>
         </div> -->
 
-        <tr>
-            <th>Job name</th>
-            <th>Job date</th>
-            <th>Job time</th>
-            <th>No. of applications</th>
-            <th>Action</th>
-
-        </tr>
-        <% records.forEach(function(data) {%>
-          <tr>
+            <tr>
+              <th>Job name</th>
+              <th>Job date</th>
+              <th>Job time</th>
+              <th>No. of applications</th>
+              <th>Action</th>
+            </tr>
+            <% records.forEach(function(data) {%>
+            <tr>
               <td><%= data.postName%></td>
               <td><%= data.startDate.toLocaleDateString()%></td>
               <td><%= data.startTime%></td>
               <td><%= data.applicants.length%></td>
-            <td><a href="/company/applicants/<%= data._id%>">View</a></td>
-        </tr>
-        <%}) %>
-</table>
+              <form action="/company/applicants" method="POST">
+              <input type="text" name="id" class="hide" value="<%=data._id%>">
+              <td><button type="submit">View</button></td>
+            </form>
+            </tr>
+            <%}) %>
+          </table>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-</body>
+  </body>
 </html>

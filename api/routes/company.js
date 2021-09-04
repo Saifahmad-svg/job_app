@@ -169,6 +169,7 @@ router.post("/jobdetails", (req, res) => {
     jobDays: req.body.jobDays,
     startDate: req.body.startDate,
     startTime: req.body.startTime,
+    meridiem: req.body.meridiem,
     duration: req.body.duration,
     reportTime: req.body.reportTime,
     requiredExperience: req.body.requiredExperience,
@@ -214,9 +215,14 @@ router.get("/applications", (req, res) => {
   });
 });
 
-router.get("/applicants/:id", async(req, res) => {
+router.post("/applicants", async(req, res) => {
+  
   let userNumber = req.session.User.userNumber;
-  let id = mongoose.Types.ObjectId(req.params.id);
+  let id = mongoose.Types.ObjectId(req.body.id);
+  req.session.User = {
+    userNumber,
+    id,
+  };
 
     let applicant =await jobDetails.find(id);
     // console.log(applicant)
@@ -230,35 +236,100 @@ router.get("/applicants/:id", async(req, res) => {
     })
   });
 
+  router.get("/applicants", async(req, res) => {
+  
+    let userNumber = req.session.User.userNumber;
+    let id = mongoose.Types.ObjectId(req.session.User.id);
+  
+      let applicant =await jobDetails.find(id);
+      // console.log(applicant)
+  
+     let appData =await applicant.forEach(async function(docs){
+        applicants=await docs.applicants;
+  
+        let applicantData =await newUser.find({ _id: { $in: applicants } });
+        // console.log(applicantData)
+        res.render('applicants',{records:applicant,record:applicantData});
+      })
+    });
 // here :id should be of jobdetails id
-router.get("/application/:id", async (req, res) => {
-  let id = mongoose.Types.ObjectId(req.params.id);
+// router.get("/application/:id", async (req, res) => {
+//   let id = mongoose.Types.ObjectId(req.params.id);
 
-  try {
-    let applicants = await jobDetails.findOne({ _id: id });
-    let data = applicants.applicants;
-    let applicantData = await newUser.find({ _id: { $in: data } });
-    res.send(applicantData);
-  } catch (error) {
-    console.log(error);
-  }
-});
+//   try {
+//     let applicants = await jobDetails.findOne({ _id: id });
+//     let data = applicants.applicants;
+//     let applicantData = await newUser.find({ _id: { $in: data } });
+//     res.send(applicantData);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 // here :id should be of jobdetails id and jobseekers id will be fetch from body
-router.get("/hire/:id", (req, res) => {
-  let id = mongoose.Types.ObjectId(req.params.id);
-  let userId = req.body.userId;
+router.post("/hire",(req, res) => {
+  let mid = req.session.User.id;
+  let id =mongoose.Types.ObjectId(mid);
+  // let userId = mongoose.Types.ObjectId(req.params.id);
+  let did = mongoose.Types.ObjectId( req.body.uid);
+  let aid =mongoose.Types.ObjectId( req.body.aid);
+  // console.log(userId)
   jobDetails
-    .findOneAndUpdate({ _id: id }, { $addToSet: { hired: userId } })
-    .exec(function (err, docs) {
+    .findOneAndUpdate({ _id: did }, { $addToSet: { hired: aid } })
+    .exec(async function (err, docs) {
       if (err) throw err;
-      res.send("Hired successfully");
+      
+      let applicant =await jobDetails.find(id);
+      // console.log(applicant)
+  
+     let appData =await applicant.forEach(async function(docs){
+        applicants=await docs.applicants;
+  
+        let applicantData =await newUser.find({ _id: { $in: applicants } });
+        // console.log(applicantData)
+        res.render('applicants',{records:applicant,record:applicantData});
+      })
+
     });
   newUser
-    .findOneAndUpdate({ _id: userId }, { $addToSet: { hiredfor: id } })
+    .findOneAndUpdate({ _id: aid }, { $addToSet: { hiredfor: did } })
     .exec(function (err, docs) {
       if (err) throw err;
     });
-    console.log("Hire")
+    // console.log("Hire")
+});
+
+router.post("/reject",async(req, res) => {
+  let mid = req.session.User.id;
+  let id =mongoose.Types.ObjectId(mid);
+
+  let jobId =mongoose.Types.ObjectId(req.body.jobId);
+  let applicantId =mongoose.Types.ObjectId(req.body.applicantId);
+
+  console.log("Applying for",jobId)
+  console.log("Applicant Id",applicantId)
+
+  jobDetails
+    .findOneAndUpdate({ _id: jobId }, { $pull: { applicants: applicantId } })
+    .exec(async function (err, docs) {
+      if (err) throw err;
+      
+      let applicant =await jobDetails.find(id);
+      // console.log(applicant)
+  
+     let appData =await applicant.forEach(async function(docs){
+        applicants=await docs.applicants;
+  
+        let applicantData =await newUser.find({ _id: { $in: applicants } });
+        // console.log(applicantData)
+        res.render('applicants',{records:applicant,record:applicantData});
+      })
+
+    });
+  newUser
+    .findOneAndUpdate({ _id: applicantId }, { $addToSet: { hiredfor: jobId } })
+    .exec(function (err, docs) {
+      if (err) throw err;
+    });
 });
 module.exports = router;

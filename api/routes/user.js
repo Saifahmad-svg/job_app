@@ -225,7 +225,7 @@ router.post('/apply/:id',authenticateUser,async(req,res)=>{
     // let id = req.params.id;
     // console.log(id)
     let id = mongoose.Types.ObjectId(req.params.id);
-    console.log(id)
+    console.log("Applying for",id)
 
     let number = req.session.User.userNumber
 
@@ -237,7 +237,7 @@ router.post('/apply/:id',authenticateUser,async(req,res)=>{
             {"$addToSet": { "applicants": user._id }},
             ).exec(function(err,docs){
                 if(err) throw err;
-                console.log("Done")
+                console.log("Applied Successfully")
             })
     }
     catch(error){

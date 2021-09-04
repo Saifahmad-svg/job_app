@@ -9,6 +9,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
     <style>
+    .modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s linear 0.1s, opacity 0.3s ease;
+}
+.modal.open {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 21;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+ .mbtnwrap{
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+        }
+.modal__container {
+  position: relative;
+  z-index: 22;
+  width: 30%;
+  height: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.modal__container p{
+  font-size: 30px!important;
+    padding-bottom: 20px;
+}
+
          body {
         margin: 0;
         padding: 0;
@@ -26,7 +80,7 @@
 
         .sidenav a {
             padding: 37px 8px 6px 70px;
-            width: 350px;
+            /* width: 350px; */
             height: 31px;
             text-decoration: none;
             font-size: 25px;
@@ -144,10 +198,15 @@
             line-height: 24px;
             border: none;
             border-color: #5D4DA8;
+            align-items: center;
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+            cursor: pointer;
         }
      .btnwrap{
          display: flex;
-         gap: 50px;
+         gap: 30px;
          padding-left: 24px;
      }
         .reject{
@@ -164,6 +223,11 @@
             background: #D8D8D8;
             border-radius: 10px;
             border-color: #D8D8D8;
+            align-items: center;
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+            color: black;
         }
         .arrowWrap {
         display: flex;
@@ -184,8 +248,9 @@
       }
       .proftypeWrap {
         background-image: url(../css/orange-patch.png), url(../css/yellow-patch-rotated.png), url(../css/round-pink-patch.png);
+        /* background-image: url(../css/orange-patch.png), url(../css/yellow-patch-rotated.png), url(../css/round-pink-patch.png); */
         background-repeat: no-repeat;
-        height: 100vh;
+        height: 100%;
         background-position: bottom left -164px, right 60px top -65px, center right;
         width: 100%;
       }
@@ -199,6 +264,48 @@
       .uapplicants{
           padding: 0 !important;
       }
+      .hide{
+          display: none;
+      }
+      .mbton{
+        border: none;
+        background: none;
+      }
+      /* .modal {
+        display: none;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+        } */
+
+        /* Modal Content */
+        /* .modal-content {
+        background-color: #fefefe;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        border: 1px solid #888;
+        width: 30%;
+        height: 30%;
+        padding: 5px;;
+        font-size: 36px;
+        border: black;
+        border-radius: 5px;
+        } */
+
+        /* .modal-content button{
+        background-color: #5D4DA8;
+        border-radius: 5px;
+        border: none;
+        } */
       @media only screen and (max-width: 999px) {
         .sidenav{
           display: none;
@@ -206,6 +313,9 @@
         .head{
             flex-direction: column;
         }
+        .hide{
+          display: none;
+      }
     }
     @media only screen and (max-width: 600px) {
         .infohead{
@@ -222,6 +332,9 @@
         }
       .infohead h3{
           width: auto;
+      }
+      .hide{
+          display: none;
       }
     }
 
@@ -241,6 +354,9 @@
       }
       .infohead p, .subhead p{
           font-size: 14px;
+      }
+      .hide{
+          display: none;
       }
     }
     </style>
@@ -280,42 +396,174 @@
                 <h3>Job time -</h3>
                 <p><%= data.startTime%></p>
             </div>
+           
         </div>
-        <hr>
-        <% record.forEach(function(applicantData) {%>
         
+        <% record.forEach(function(sdata) {%>
+     
+            <hr>
+
         <div class="info">
             <div class="infohead">
                 <h3>Full name</h3>
                 <p>:</p>
-                <p><%= applicantData.fname%> <%= applicantData.mname%> <%= applicantData.lname%></p>
+                <p><%= sdata.fname%> <%= sdata.mname%> <%= sdata.lname%></p>
             </div>
             <div class="infohead">
                 <h3>Experience(in years)</h3>
                 <p>:</p>
-                <p><%= applicantData.experienceYears%></p>
+                <p><%= sdata.experienceYears%></p>
             </div>
             <div class="infohead">
                 <h3>Location(city)</h3>
                 <p>:</p>
-                <p><%= applicantData.location %></p>
+                <p><%= sdata.location %></p>
             </div>
             <div class="infohead">
                 <h3>Mobile no. :</h3>
                 <p>:</p>
-                <p><%= applicantData.userNumber%></p>
+                <p><%= sdata.userNumber%></p>
                 <div class="btnwrap">
-                <button class="hire"><a href="/company/hire/<%= data._id%>">Hire</a></button>
-                <button class="reject">Reject</button>
+                <a href="#jsModal" id="popup" class="jsModalTrigger hire">Hire</a>
+                
+                
+                <div id="jsModal" class="modal">
+                  <!-- Modal content -->
+                    <div class="modal__overlay jsOverlay"></div>
+                    <div class="modal__container">
+                      <p>Are you sure?</p>
+                      
+                      <div class="modal__close jsModalClose mbtnwrap">
+                        <form action="/company/hire" method="POST">
+                          <div class="hide">
+                            <input type="text" name="uid" value="<%= data._id%>">
+                            <input type="text" name="aid" value="<%= sdata._id%>">
+                              </div>
+                              
+                              <button id="hireBtn" class="hire" type="submit">Yes</button>
+                              
+                            </form>      
+                            
+                            <button class="hire">No</button>
+                          </div>                         
+                        </div>
+                      </div>
+                      
+                  <button class="mbton" onclick="onRejection('<%= data._id%>','<%= sdata._id%>')"><a class="jsModalTrigger2 reject" href="#jsModal2" id="popup">Reject</a></button>
+                    <div id="jsModal2" class="modal">
+                      <!-- Modal content -->
+                      <div class="modal__overlay jsOverlay"></div>
+                      <div class="modal__container">
+                        <p>Are you sure?</p>
+                        <form action="/company/reject" method="POST">
+                          <div class="hide">
+                            <input type="text" name="jobId" value="<%= data._id%>">
+                            <input type="text" name="applicantId" class="data">
+                          </div>
+                        <div class="modal__close jsModalClose mbtnwrap">
+                        <button id="hireBtn" class="hire" type="submit">Yes</button>
+                       
+                      </form>      
+                        <button class="hire">No</button>
+                      </div>                         
+                    </div>
+                      </div>
+            
+          
             </div>
         </div>
         </div>
-        <hr>
-     
+        
         <%}) %>
         <%}) %>
     </div>
     </div>
     </div>
+
+    <script>
+
+function onRejection(jobData,userData) {
+  for(i=0; i<100;i++){
+  document.getElementsByClassName("data")[i].value = userData;
+  console.log(activeUser)
+  }
+}
+
+  (function() {
+   
+  /* Opening modal window function */
+  function openModal() {
+      /* Get trigger element */
+      var modalTrigger = document.getElementsByClassName('jsModalTrigger');
+      var modalTrigger2 = document.getElementsByClassName('jsModalTrigger2');
+
+      /* Set onclick event handler for all trigger elements */
+      for(var i = 0; i < modalTrigger.length; i++) {
+          modalTrigger[i].onclick = function() {
+           
+            var target = this.getAttribute('href').substr(1);
+            var modalWindow = document.getElementById(target);
+
+            modalWindow.classList ? modalWindow.classList.add('open') : modalWindow.className += ' ' + 'open'; 
+          }
+      }   
+
+      for(var i = 0; i < modalTrigger2.length; i++) {
+          modalTrigger2[i].onclick = function() {
+           
+            var target = this.getAttribute('href').substr(1);
+            var modalWindow = document.getElementById(target);
+
+            modalWindow.classList ? modalWindow.classList.add('open') : modalWindow.className += ' ' + 'open'; 
+          }
+      }  
+  }
+
+  function closeModal(){
+    /* Get close button */
+    var closeButton = document.getElementsByClassName('jsModalClose');
+    var closeOverlay = document.getElementsByClassName('jsOverlay');
+
+    // var modal = document.getElementById('jsModal');
+
+    /* Set onclick event handler for close buttons */
+      for(var i = 0; i < closeButton.length; i++) {
+        closeButton[i].onclick = function() {
+          var modalWindow = this.parentNode.parentNode;
+        
+          modalWindow.classList ? modalWindow.classList.remove('open') : modalWindow.className = modalWindow.className.replace(new RegExp('(^|\\b)' + 'open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+        }
+      }   
+
+    /* Set onclick event handler for modal overlay */
+      for(var i = 0; i < closeOverlay.length; i++) {
+        closeOverlay[i].onclick = function() {
+          var modalWindow = this.parentNode;
+
+          modalWindow.classList ? modalWindow.classList.remove('open') : modalWindow.className = modalWindow.className.replace(new RegExp('(^|\\b)' + 'open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+        }
+      }  
+
+  }
+
+  /* Handling domready event IE9+ */
+  function ready(fn) {
+    if (document.readyState != 'loading'){
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+
+  /* Triggering modal window function after dom ready */
+  ready(openModal);
+  ready(closeModal);
+}());
+
+if ( window.history.replaceState ) {
+  let href = "http://127.0.0.1/company/applicants"
+        window.history.replaceState( null, null,href);
+    }
+</script>
 </body>
 </html>

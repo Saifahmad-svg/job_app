@@ -60,8 +60,24 @@
         font-size: 18px;
         line-height: 22px;
       }
-      .prof a, .upload{
+      .prof .uploadLink {
+        text-decoration: underline;
+      }
+      .prof .uploadLink,
+      .upload {
         color: #5d4da8;
+        cursor: pointer;
+      }
+      .uploadLink{
+        display: block;
+    text-align-last: end;
+    font-family: "Lato", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    cursor: pointer;
+    text-decoration: underline;
       }
       .container img {
         border-radius: 50px;
@@ -75,11 +91,11 @@
       .proftypeWrap {
         background-image: url("../css/yellow-patch.png"),
           url("../css/vector 4.png");
-        background-position: bottom left, right -175px top -65px;
+        background-position: bottom 0px left 62px, right -175px top -65px;
         background-repeat: no-repeat;
         /* background-size: cover; */
         height: 100%;
-        width: 100%;
+        width: auto;
       }
       p {
         margin: 0px;
@@ -120,7 +136,7 @@
         width: 78px;
         height: 22px;
         padding: 30px 0;
-        padding-left: 60px;
+        padding-left: 67px;
       }
       hr {
         /* padding-left: 150px ; */
@@ -163,7 +179,7 @@
         box-sizing: border-box;
         border-radius: 8px;
         margin-top: 15px;
-        
+
         font-style: normal;
         font-size: 20px;
         line-height: 22px;
@@ -177,7 +193,80 @@
         font-weight: normal;
         font-size: 18px;
         line-height: 22px;
+        cursor: pointer;
+        /* background-color: indigo;
+        color: white;
+        padding: 0.5rem;
+        font-family: sans-serif;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        margin-top: 1rem; */
+        text-decoration: underline;
       }
+      #img-before-preview {
+        margin-right: 25px;
+      }
+      #img-preview {
+        display: none;
+        width: 85px;
+        margin-right: 25px;
+        border-radius: 50%;
+      }
+      #img-preview img {
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        /* height: auto; */
+        display: block;
+      }
+      [type="file"] {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+      }
+      /* [type="file"] + label {
+        font-family: sans-serif;
+        background: #f44336;
+        padding: 10px 30px;
+        border: 2px solid #f44336;
+        border-radius: 3px;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      [type="file"] + label:hover {
+        background-color: #fff;
+        color: #f44336;
+      } */
+      .fileUpload {
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+      }
+      .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+      }
+      /* #selected {
+        text-transform: uppercase;
+        color: teal;
+        padding: 0 5px;
+      }
+      [value="getFile"] {
+        background: teal;
+        cursor: pointer;
+        color: white;
+        padding: 0 5px;
+        font-family: Trebuchet MS;
+        border: 0;
+      } */
       .subsec2 {
         display: flex;
         gap: 63px;
@@ -185,7 +274,10 @@
       }
       .subsec3 {
         display: flex;
-        gap: 40px;
+        /* gap: 40px; */
+        /* justify-content: space-between; */
+        column-gap: 32px;
+        flex-wrap: wrap;
         margin-bottom: 8px;
       }
       .btype {
@@ -209,12 +301,13 @@
         justify-content: space-between;
         align-items: center;
       }
-      .arrowIcon{
+      .arrowIcon {
         padding-top: 37px;
         padding-right: 8px;
       }
       .btype label {
         font-size: 18px;
+        /* width: 106px; */
         font-weight: 400;
         color: #5e5e5e;
         font-family: "Lato", sans-serif;
@@ -253,11 +346,22 @@
       /* .router {
         display: none;
       } */
-      table{
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
-
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .btypeWrap {
+        display: flex;
+        align-items: flex-end;
+        gap: 25px;
+      }
+      .othersline {
+        border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: large;
+    width: 100px;
       }
       @media only screen and (max-width: 1024px) {
         .subsec2 {
@@ -270,6 +374,13 @@
         }
         .container {
           width: auto;
+        }
+        .proftypeWrap {
+          width: auto;
+        }
+        .addline input,
+        .bussname input {
+          width: 335px;
         }
       }
       @media only screen and (max-width: 999px) {
@@ -328,10 +439,10 @@
         .addline input {
           width: 100%;
 
-        font-style: normal;
-        font-size: 15px;
-        line-height: 22px;
-        padding-left: 20px;
+          font-style: normal;
+          font-size: 15px;
+          line-height: 22px;
+          padding-left: 20px;
         }
         .title {
           font-size: 35px;
@@ -366,7 +477,7 @@
           <a href="/company/proftype">Type of Profile</a>
           <div class="arrowWrap">
             <a href="/company/profinfo">Profile Information</a>
-  
+
             <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
           </div>
           <a href="/company/jobposting">Job Posting</a>
@@ -376,122 +487,212 @@
       </div>
       <div class="proftypeWrap">
         <div class="container">
-          <form action="/company/profinfo" method="POST" >
-          <!-- <p class="router"><a href="/profile">Back</a></p> -->
-          <div class="sec1">
-            <h2 class="title">Profile Information</h2>
-            <div class="prof">
-              <img src="/css/prof.png" />
-              <p>
-                <a href="#"> Upload profile image of Business / Individual</a>
-              </p>
+          <form action="/company/profinfo" method="POST">
+            <!-- <p class="router"><a href="/profile">Back</a></p> -->
+            <div class="sec1">
+              <h2 class="title">Profile Information</h2>
+              <div class="prof">
+                <!-- <img src="/css/prof.png" />
+                <p>
+                  <a href="#"> Upload profile image of Business / Individual</a>
+                </p> -->
+                <div id="img-preview"><img src="/css/prof.png" /></div>
+                <div id="img-before-preview"><img src="/css/prof.png" /></div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="choose-file"
+                  name="choose-file"
+                  value="/css/prof.png"
+                />
+                <label for="choose-file" class="uploadLink">
+                  Upload profile image of Business / Individual</label
+                >
+              </div>
+              <div class="bussname">
+                <p>Name of Business / Individual</p>
+                <input type="text" name="nameOfBusiness" />
+              </div>
+            </div>
+            <hr />
+            <div class="sec2">
+              <h2 class="address">Address</h2>
+              <div class="subsec2">
+                <div class="addline">
+                  <p>Address line 1</p>
+                  <input type="text" name="addressLine" />
+                </div>
+                <div class="addline">
+                  <p>Street</p>
+                  <input type="text" name="streetName" />
+                </div>
+              </div>
+
+              <div class="subsec2">
+                <div class="addline">
+                  <p>Town / City</p>
+                  <input type="text" name="city" />
+                </div>
+                <div class="addline">
+                  <p>State</p>
+                  <input type="text" name="state" />
+                </div>
+              </div>
+              <div class="addline">
+                <p>Pincode</p>
+                <input type="text" name="pincode" />
+              </div>
+            </div>
+            <hr />
+            <div class="sec3">
+              <div class="subsec2">
+                <div class="bussname">
+                  <p>Business / Individual mobile number</p>
+                  <input value="<%= number %>" readonly />
+                </div>
+                <div class="bussname">
+                  <p>Business incorporation certificate</p>
+                  <!-- <input
+                    type="file"
+                    name="businessIncorporationCertificate"
+                    value="bulli"
+                    multiple
+                  />
+                  <a class="upload" href="#"> Upload</a> -->
+                  <!-- <input
+                    type="file"
+                    id="actual-btn"
+                    name="businessIncorporationCertificate"
+                    value="bulli"
+                    multiple
+                    hidden
+                  />
+                  <input
+                    type="text"
+                    id="actual-btn"
+                    name="businessIncorporationCertificate"
+                    value="bulli"
+                    multiple
+                  />
+             
+                  <label class="upload" for="actual-btn">Upload</label>
+                </div> -->
+                  <input id="uploadFile" placeholder="Choose File" class="" />
+                  <div class="fileUpload btn btn-primary">
+                    <span class="upload">Upload</span>
+                    <input id="uploadBtn" type="file" class="upload" />
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="bussname">
-              <p>Name of Business / Individual</p>
-              <input type="text" name="nameOfBusiness"/>
+              <p>Nature of business</p>
             </div>
-          </div>
-          <hr />
-          <div class="sec2">
-            <h2 class="address">Address</h2>
-            <div class="subsec2">
-              <div class="addline">
-                <p>Address line 1</p>
-                <input type="text" name="addressLine" />
+            <div class="subsec3">
+              <div class="btype">
+                <input type="checkbox" name="businessNature" value="Bar" />
+                <label>Bar</label>
               </div>
-              <div class="addline">
-                <p>Street</p>
-                <input type="text" name="streetName" />
+              <div class="btype">
+                <input
+                  type="checkbox"
+                  name="businessNature"
+                  value="Restaurant"
+                />
+                <label>Restaurant</label>
+              </div>
+              <div class="btype">
+                <input
+                  type="checkbox"
+                  name="businessNature"
+                  value="Kirana store"
+                />
+                <label>Kirana store</label>
+              </div>
+              <div class="btype">
+                <input
+                  type="checkbox"
+                  name="businessNature"
+                  value="Supermarket"
+                />
+                <label>Supermarket</label>
+              </div>
+              <div class="btype">
+                <input
+                  type="checkbox"
+                  name="businessNature"
+                  value="Healthcare center"
+                />
+                <label>Healthcare center</label>
+              </div>
+              <!-- </div>
+            <div class="subsec3"> -->
+              <div class="btype">
+                <input
+                  type="checkbox"
+                  name="businessNature"
+                  value="Goverment office"
+                />
+                <label>Goverment office</label>
+              </div>
+              <div class="btype">
+                <input type="checkbox" name="businessNature" value="IT park" />
+                <label>IT park</label>
+              </div>
+              <div class="btype">
+                <input
+                  type="checkbox"
+                  name="businessNature"
+                  value="Clothing shop"
+                />
+                <label>Clothing shop</label>
+              </div>
+              <div class="btype">
+                <input type="checkbox" name="businessNature" value="Showroom" />
+                <label>Showroom</label>
               </div>
             </div>
-
-            <div class="subsec2">
-              <div class="addline">
-                <p>Town / City</p>
-                <input type="text" name="city"/>
+            <div class="btypeWrap">
+              <div class="btype">
+                <input type="checkbox" name="businessNature" value="Others" />
+                <label>Others</label>
               </div>
-              <div class="addline">
-                <p>State</p>
-                <input type="text" name="state" />
-              </div>
+              <div class="othersHrLine"><input type="text" class="othersline"></div>
             </div>
-            <div class="addline">
-              <p>Pincode</p>
-              <input type="text" name="pincode" />
+            <div class="btnWrap">
+              <button class="back" type="submit">
+                <a>Back</a>
+              </button>
+              <button type="submit">
+                <a>Next</a>
+              </button>
             </div>
-          </div>
-          <hr />
-          <div class="sec3">
-            <div class="subsec2">
-              <div class="bussname">
-                <p>Business / Individual mobile number</p>
-                <input value="<%= number %>" readonly/>
-              </div>
-              <div class="bussname">
-                <p>Business incorporation certificate</p>
-                <input type="file" name="businessIncorporationCertificate" value="bulli" multiple/>
-                <a class="upload" href="#"> Upload</a>
-              </div>
-            </div>
-          </div>
-          <div class="bussname">
-            <p>Nature of business</p>
-          </div>
-          <div class="subsec3">
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="Bar" />
-              <label>Bar</label>
-            </div>
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="Restaurant" />
-              <label>Restaurant</label>
-            </div>
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="Kirana store" />
-              <label>Kirana store</label>
-            </div>
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="Supermarket" />
-              <label>Supermarket</label>
-            </div>
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="Healthcare center" />
-              <label>Healthcare center</label>
-            </div>
-          </div>
-          <div class="subsec3">
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="Goverment office" />
-              <label>Goverment office</label>
-            </div>
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="IT park" />
-              <label>IT park</label>
-            </div>
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="Clothing shop" />
-              <label>Clothing shop</label>
-            </div>
-            <div class="btype">
-              <input type="checkbox" name="businessNature" value="Showroom" />
-              <label>Showroom</label>
-            </div>
-          </div>
-          <div class="btype">
-            <input type="checkbox" name="businessNature" value="Others" />
-            <label>Others</label>
-          </div>
-          <div class="btnWrap">
-            <button class="back" type="submit">
-              <a>Back</a>
-            </button>
-            <button type="submit">
-              <a>Next</a>
-            </button>
-          </div>
-        </form>
+          </form>
         </div>
       </div>
     </div>
+    <script>
+      document.getElementById("uploadBtn").onchange = function () {
+        document.getElementById("uploadFile").value = this.value;
+      };
+      const chooseFile = document.getElementById("choose-file");
+      const imgPreview = document.getElementById("img-preview");
+      const imgBeforePreview = document.getElementById("img-before-preview");
+      function getImgData() {
+        const files = chooseFile.files[0];
+        if (files) {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(files);
+          fileReader.addEventListener("load", function () {
+            imgPreview.style.display = "block";
+            imgPreview.innerHTML = '<img src="' + this.result + '" />';
+            imgBeforePreview.style.display = "none";
+          });
+        }
+      }
+      chooseFile.addEventListener("change", function () {
+        getImgData();
+      });
+    </script>
   </body>
 </html>

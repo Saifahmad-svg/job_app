@@ -47,6 +47,9 @@
         margin: 0;
         padding: 0;
       }
+      .jobFormWrap {
+        padding-bottom: 50px;
+      }
       .title {
         font-family: "Lato", sans-serif;
         font-style: normal;
@@ -83,7 +86,7 @@
         line-height: 22px;
         padding-left: 20px;
       }
-      .pink{
+      .pink {
         color: #5d4da8;
         font-weight: bold;
       }
@@ -94,8 +97,8 @@
         font-size: 18px;
         line-height: 22px;
       }
-      .data{
-        border: none!important;
+      .data {
+        border: none !important;
         /* width: 27px; */
         font-family: "Lato", sans-serif;
         font-style: normal;
@@ -106,6 +109,21 @@
         min-width: 40px;
         max-width: 55px;
       }
+      .form {
+      width: 130px;
+      font-size: 35px;
+      padding: 5px;
+      border: 2px solid;
+      border-radius: 5px;
+      text-align: center; 
+      color: #5E5E5E;
+      font-weight: bold;
+    }
+    .message {
+      padding: 5px;
+      width: 285px;
+      font-size: 14px;
+    }
       .wrap {
         display: flex;
         /* justify-content: space-around; */
@@ -113,11 +131,11 @@
         gap: 0px;
       }
       .sbtnwrap {
-    display: flex;
+        display: flex;
 
-    align-items: center;
-    /* gap: 20px; */
-}
+        align-items: center;
+        /* gap: 20px; */
+      }
       .nav {
         width: 78px;
         height: 22px;
@@ -130,7 +148,7 @@
         height: 66px;
         background: #5d4da8;
         border-radius: 15px;
-        border:none;
+        border: none;
       }
       .backBtn {
         background: #d8d8d8;
@@ -161,7 +179,17 @@
         height: 29px;
         color: #ffffff;
       }
-      p, h2 {
+      .btnlabel{
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #5e5e5e;
+        padding-left: 15px;
+      }
+      p,
+      h2 {
         margin: 0;
         padding: 0;
       }
@@ -170,12 +198,41 @@
         justify-content: space-between;
         align-items: center;
       }
-      .arrowIcon{
+      .arrowIcon {
         padding-top: 37px;
         padding-right: 8px;
       }
       .bussname {
         margin-top: 40px;
+      }
+      .drop{
+        display: flex;
+        gap:10px;
+      }
+      .dropdown{
+        width: 130px;
+        height: 55px;
+        border: 1px solid #c4c4c4;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin-top: 15px;
+        font-style: normal;
+        line-height: 22px;
+        width: 130px;
+        font-size: 35px;
+        padding: 5px;
+        text-align: center;
+        padding-left: 25px;
+        color: #5E5E5E;
+        font-weight: bold;
+      }
+      .requiredwrap{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .style-select {
+        color: rebeccapurple;
       }
       .label {
         font-family: "Lato", sans-serif;
@@ -189,7 +246,8 @@
         align-items: center;
         gap: 51px;
       }
-      label{
+      
+      label {
         font-family: "Lato", sans-serif;
         font-style: normal;
         font-weight: 500;
@@ -200,8 +258,17 @@
       }
       textarea {
         width: 502px;
-
+        margin-top: 15px;
         height: 140px;
+        border: 1px solid #c4c4c4;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin-top: 15px;
+
+        font-style: normal;
+        font-size: 20px;
+        line-height: 22px;
+        padding-left: 5px;
       }
       .smallBtnN {
         width: 30px;
@@ -214,7 +281,7 @@
         font-weight: bold;
         font-size: larger;
       }
-      .databtn{
+      .databtn {
         display: flex;
         align-items: center;
       }
@@ -233,64 +300,66 @@
         align-items: center;
         gap: 15px;
       }
-      .paybtn{
+      .paybtn {
         display: flex;
         align-items: center;
-
       }
       .proftypeWrap {
         background-image: url("../css/round-pink-patch.png"),
           url("../css/yellow-patch-rotated.png");
-          background-position: bottom right -6px, right 60px top -65px;
+        background-position: bottom right -6px, right 60px top -65px;
         background-repeat: no-repeat;
         /* background-size: cover; */
         height: 100%;
         width: 100%;
       }
-      .payment,  .duration, .data, .experience{
+      .payment,
+      .duration,
+      .data,
+      .experience {
         /* font-family: "Lato",sans-serif;
         font-style: normal;
         font-weight: normal;
         font-size: 18px;
         line-height: 22px; */
-        color: #5E5E5E;
+        color: #5e5e5e;
       }
 
-      input[type=number]::-webkit-inner-spin-button, 
-      input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
       }
 
-      input[type=number] {
+      input[type="number"] {
         -moz-appearance: textfield;
       }
 
       @media only screen and (max-width: 999px) {
-        .sidenav{
+        .sidenav {
           display: none;
         }
-    .proftypeWrap{
-      width: auto;
-    }
-    }
-    @media only screen and (max-width: 540px) {
-      textarea{
-        width: 275px;
+        .proftypeWrap {
+          width: auto;
+        }
       }
-      .nextBtn{
-        width: 100%;
+      @media only screen and (max-width: 540px) {
+        textarea {
+          width: 275px;
+        }
+        .nextBtn {
+          width: 100%;
+        }
+        .backBtn {
+          width: 100%;
+        }
+        .label {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .proftypeWrap {
+          width: 100%;
+        }
       }
-      .backBtn{
-        width: 100%;
-      }
-      .label{
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .proftypeWrap{
-        width: 100%;
-      }
-    }
     </style>
   </head>
   <body>
@@ -310,128 +379,245 @@
         <a href="/company/applications">Applications</a>
       </div>
       <div class="proftypeWrap">
-      <div class="container">
-        <form action="/company/jobdetails" method="POST">
-        <div class="sec1">
-          <h2 class="title">Job Posting</h2>
-          <div class="bussname">
-            <p>Job post name</p>
-            <input class="inp" type="text" name="postName"/>
-          </div>
-          <div class="bussname1">
-            <div class="bussname">
-              <div class="btnwrap">
-                <p>No of people wanted</p>
-                <div class="databtn">
-                <button type="button" class="smallBtnN" onclick="dataDec()">-</button>
-                <input class="data" id="data" name="noOfPersons" type="number" min="0" value="0">
-                <!-- <p id="data" class="data">0</p> -->
-                <button type="button" class="smallBtnP" onclick="dataInc()">+</button>
+        <div class="container">
+          <form action="/company/jobdetails" method="POST" class="jobFormWrap">
+            <div class="sec1">
+              <h2 class="title">Job Posting</h2>
+              <div class="bussname">
+                <p>Job post name</p>
+                <input class="inp" type="text" name="postName" />
               </div>
+              <div class="bussname1">
+                <div class="bussname">
+                  <div class="btnwrap">
+                    <p>No of people wanted</p>
+                    <div class="databtn">
+                      <button
+                        type="button"
+                        class="smallBtnN"
+                        onclick="dataDec()"
+                      >
+                        -
+                      </button>
+                      <input
+                        class="data"
+                        id="data"
+                        name="noOfPersons"
+                        type="number"
+                        min="0"
+                        value="0"
+                      />
+                      <!-- <p id="data" class="data">0</p> -->
+                      <button
+                        type="button"
+                        class="smallBtnP"
+                        onclick="dataInc()"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bussname">
+                <p>Job start date</p>
+                <input class="inp pink" type="date" name="startDate" />
+              </div>
+
+              <div class="bussname">
+                <p>Starting time (hh:mm am/pm)</p>
+                <div class="drop">
+                <input type="text" maxlength="8" onkeyup="timeFormatter(this)" onfocusout="timeChecker(this)" onFocus="javascript:this.value=''" placeholder="00:00" name="startTime" class="form inp pink">
+                <!-- <p id="timeCheckerMessage" class="message"></p> -->
+                <div class="style-select">
+                <select class="dropdown" name="meridiem">
+                  <option> AM </option>
+                   <option>  PM </option>
+                </select>
+              </div>
+              </div>
+              </div>
+
+              <div class="bussname">
+                <div class="btnwrap">
+                  <p>Duration</p>
+                  <div class="databtn">
+                    <button
+                      type="button"
+                      class="smallBtnN"
+                      onclick="durationDec()"
+                    >
+                      -
+                    </button>
+                    <input
+                      class="data"
+                      id="duration"
+                      name="duration"
+                      type="number"
+                      min="1"
+                      value="1"
+                      max="6"
+                    />
+                    <button
+                      type="button"
+                      class="smallBtnP"
+                      onclick="durationInc()"
+                    >
+                      +
+                    </button>
+                    <div class="btnlabel"> hours</div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="label">
+                Note : Duration of part-time jobs can’t be less than 1 hour and
+                can’t be more than 6 hours
+              </p>
+
+              <div class="bussname">
+                <p>Required experience</p>
+                <div class="btnwrap">
+                  <div class="label">
+                    <div class="radioWrap">
+                      <input
+                        type="radio"
+                        name="requiredExperience"
+                        value="No experience"
+                      />
+                      <label>No experience</label>
+                    </div>
+                    <div class="requiredwrap">
+                    <div class="radioWrap">
+                      <input type="radio" name="requiredExperience" value=NULL/>
+                      <label>More than</label>
+                    </div>
+                     <div class="sbtnwrap">
+                      <button type="button" class="smallBtnN" onclick="experienceDec()">-</button>
+                      <input class="data" id="experience" name="requiredExperience" type="number" min="0" value="0" />
+                      <button type="button" class="smallBtnP" onclick="experienceInc()">+</button>
+                     <div class="btnlabel"> years experience</div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bussname">
+                <p>Training</p>
+                <div class="label">
+                  <div class="radioWrap">
+                    <input
+                      type="radio"
+                      name="training"
+                      value="Will be provided"
+                    />
+                    <label>Will be provided</label>
+                  </div>
+                  <div class="radioWrap">
+                    <input type="radio" name="training" value="On job" />
+                    <label>On job</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bussname">
+                <div class="btnwrap">
+                  <p>Payment</p>
+                  <div class="paybtn">
+                    <button
+                      type="button"
+                      class="smallBtnN"
+                      onclick="paymentDec()"
+                    >
+                      -
+                    </button>
+                    <input
+                      class="data"
+                      id="payment"
+                      name="payment"
+                      type="number"
+                      min="100"
+                      value="0"
+                      step="100"
+                    />
+                    <button
+                      type="button"
+                      class="smallBtnP"
+                      onclick="paymentInc()"
+                    >
+                      +
+                    </button>
+                    <div class="btnlabel">INR per hour</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bussname">
+                <p>Mode of payment</p>
+                <div class="label">
+                  <div class="radioWrap">
+                    <input
+                      type="radio"
+                      name="paymentMode"
+                      value="Cash in hand"
+                    />
+                    <label>Cash in hand</label>
+                  </div>
+                  <div class="radioWrap">
+                    <input type="radio" name="paymentMode" value="Cheque" />
+                    <label>Cheque</label>
+                  </div>
+                  <div class="radioWrap">
+                    <input
+                      type="radio"
+                      name="paymentMode"
+                      value="Bank transfer"
+                    />
+                    <label>Bank transfer</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bussname">
+                <p>Job description</p>
+                <textarea name="jobDescription" cols="30" rows="10"></textarea>
+              </div>
+
+              <div class="bussname">
+                <p>Perks</p>
+                <div class="label">
+                  <div class="radioWrap">
+                    <input type="checkbox" name="perks" value="Food" />
+                    <label>Food</label>
+                  </div>
+                  <div class="radioWrap">
+                    <input type="checkbox" name="perks" value="Drinks" />
+                    <label>Drinks</label>
+                  </div>
+                  <div class="radioWrap">
+                    <input type="checkbox" name="perks" value="Certificate" />
+                    <label>Certificate</label>
+                  </div>
+                  <div class="radioWrap">
+                    <input
+                      type="checkbox"
+                      name="perks"
+                      value="Opportunity to learn a new skill"
+                    />
+                    <label>Opportunity to learn a new skill</label>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="backBtn">
+                <a>Back</a>
+              </button>
+              <button class="nextBtn">
+                <a>Submit</a>
+              </button>
             </div>
-          </div>
-          </div>
-          <div class="bussname">
-            <p>Job start date</p>
-            <input class="inp pink" type="date" name="startDate"/>
-          </div>
-
-          <div class="bussname">
-            <p>Starting time (hh:mm am/pm)</p>
-            <input class="inp pink" type="time" name="startTime"/>
-          </div>
-
-          <div class="bussname">
-            <div class="btnwrap">
-              <p>Duration</p>
-              <div class="databtn">
-              <button type="button" class="smallBtnN" onclick="durationDec()">-</button>
-              <input class="data" id="duration" name="duration" type="number" min="0" value="0">
-              <button type="button" class="smallBtnP" onclick="durationInc()">+</button>
-            </div>
-          </div>
-          </div>
-
-          <p class="label">
-            Note : Duration of part-time jobs can’t be less than 1 hour and
-            can’t be more than 6 hours
-          </p>
-
-          <div class="bussname">
-            <p>Required experience</p>
-            <div class="btnwrap">
-              <div class="label">
-              <div class="radioWrap"><input type="radio" name="requiredExperience" value="No experience" />
-              <label>No experience</label></div>
-              <div class="radioWrap"><input type="radio" name="requiredExperience" value="More than" />
-              <label>More than</label></div>
-              <div class="sbtnwrap">
-              <button type="button" class="smallBtnN" onclick="experienceDec()">-</button>
-              <input class="data" id="experience" name="requiredExperience" type="number" min="0" value="0">
-              <button type="button" class="smallBtnP" onclick="experienceInc()">+</button>
-            </div>
-          </div>
+          </form>
         </div>
-      </div>
-  
-
-          <div class="bussname">
-            <p>Training</p>
-            <div class="label">
-            <div class="radioWrap"><input type="radio" name="training" value="Will be provided" />
-            <label>Will be provided</label></div>
-            <div class="radioWrap"><input type="radio" name="training" value="On job" />
-            <label>On job</label></div></div>
-          </div>
-
-          <div class="bussname">
-            <div class="btnwrap">
-              <p>Payment</p>
-              <div class="paybtn">
-              <button type="button" class="smallBtnN" onclick="paymentDec()">-</button>
-              <input class="data" id="payment" name="payment" type="number" min="100" value="0" step="100">
-              <button type="button" class="smallBtnP" onclick="paymentInc()">+</button>
-            </div>
-          </div>
-          </div>
-
-          <div class="bussname">
-            <p>Mode of payment</p>
-            <div class="label">
-            <div class="radioWrap"><input type="radio" name="paymentMode" value="Cash in hand" />
-            <label>Cash in hand</label></div>
-            <div class="radioWrap"><input type="radio" name="paymentMode" value="Cheque" />
-            <label>Cheque</label></div>
-            <div class="radioWrap"><input type="radio" name="paymentMode" value="Bank transfer" />
-            <label>Bank transfer</label></div>
-          </div></div>
-
-          <div class="bussname">
-            <p>Job description</p>
-            <textarea name="jobDescription" cols="30" rows="10"></textarea>
-          </div>
-
-          <div class="bussname">
-            <p>Perks</p>
-            <div class="label">
-            <div class="radioWrap"><input type="checkbox" name="perks" value="Food" />
-            <label>Food</label></div>
-            <div class="radioWrap"> <input type="checkbox" name="perks" value="Drinks" />
-            <label>Drinks</label></div>
-            <div class="radioWrap"> <input type="checkbox" name="perks" value="Certificate" />
-            <label>Certificate</label></div>
-            <div class="radioWrap"> <input type="checkbox" name="perks" value="Opportunity to learn a new skill" />
-            <label>Opportunity to learn a new skill</label>
-          </div></div></div>
-          <button type="submit" class="backBtn">
-            <a>Back</a>
-          </button>
-          <button class="nextBtn">
-            <a>Next</a>
-          </button>
-        </div>
-      </form>
-      </div>
       </div>
     </div>
     <script>
@@ -440,32 +626,175 @@
       let duration = 0;
       let experience = 0;
       function paymentDec() {
-        document.getElementById("payment").stepDown();  
+        document.getElementById("payment").stepDown();
       }
       function paymentInc() {
         document.getElementById("payment").stepUp();
       }
 
       function dataDec() {
-          document.getElementById("data").stepDown();  
+        document.getElementById("data").stepDown();
       }
-      function dataInc() {  
+      function dataInc() {
         document.getElementById("data").stepUp();
       }
 
       function durationDec() {
-        document.getElementById("duration").stepDown();  
+        document.getElementById("duration").stepDown();
       }
       function durationInc() {
         document.getElementById("duration").stepUp();
       }
 
       function experienceDec() {
-        document.getElementById("experience").stepDown();  
+        document.getElementById("experience").stepDown();
       }
       function experienceInc() {
         document.getElementById("experience").stepUp();
       }
+
+function timeFormatter(myTime) {
+
+//If delete key or backspace key is press clear text box
+var key = event.keyCode || event.charCode;
+if( key == 8 || key == 46 ){
+    myTime.value = "";
+}
+
+//Chars allowed
+var ValidChars = /[^0-9^:^A^P^a^p^ ]/gi
+if(ValidChars.test(myTime.value)) {
+    myTime.value = myTime.value.replace(ValidChars,"");
+    timeCheckerMessage.innerHTML = "Please enter valid time format, example 12:59 PM.";
+}
+    
+//Pad 0 and add :
+if(myTime.value.length == 1){
+    if(myTime.value.trim() == 2 || myTime.value.trim() == 3 || myTime.value.trim() == 4 || myTime.value.trim() == 5 || myTime.value.trim() == 6 || myTime.value.trim() == 7 || myTime.value.trim() == 8 || myTime.value.trim() == 9){
+        myTime.value = "0" + myTime.value + ":";
+        }
+}
+
+//If 1st Char is not numeric
+if(myTime.value.length == 1){
+    if(isNaN(parseInt(myTime.value))){
+        myTime.value = "";
+        timeCheckerMessage.innerHTML = "Please enter 12 hour format.";
+    }
+}
+
+//If not numeric
+if(myTime.value.length == 2){
+    if(isNaN(myTime.value)){        
+        myTime.value = myTime.value;
+        timeCheckerMessage.innerHTML = "Please enter 12 hour format.";       
+    }
+}
+
+//Checks if hour is numeric
+if(myTime.value.length == 2){
+    if(!isNaN(myTime.value.substring(0, 2)) == false){
+        myTime.value = myTime.value.substring(0, myTime.value.length-1);        
+    } else {
+        if(parseInt(myTime.value.substring(0, 2).trim()) >= 13){
+            myTime.value = myTime.value.substring(0, myTime.value.length-2);
+            timeCheckerMessage.innerHTML = "Please enter 12 hour format.";
+            return;
+        } else {
+            myTime.value = myTime.value + ":";
+        }			
+    }
+}
+
+//Check if hour and : is located
+if(myTime.value.length == 3){
+    if(myTime.value.substring(2, 3) != ":"){
+        myTime.value = "";
+        timeCheckerMessage.innerHTML = "Please enter 12 hour format.";
+        return;
+    }
+}
+
+//Checks if minutes is numeric
+if(myTime.value.length == 5){
+    if(!isNaN(myTime.value.substring(3, 5)) == false){
+        myTime.value = myTime.value.substring(0, myTime.value.length-2);
+        timeCheckerMessage.innerHTML = "Please enter valid minute format 00 - 59.";
+    } 
+}
+
+//Checks if minutes are higher then 59
+if(myTime.value.length == 5){
+    if(parseInt(myTime.value.substring(3, 5).trim()) >= 60){
+        myTime.value = myTime.value.substring(0, myTime.value.length-2);
+        timeCheckerMessage.innerHTML = "Please enter valid minute format 00 - 59.";
+    }
+}
+
+//After minutes add space
+// if(myTime.value.length == 5){
+//     myTime.value = myTime.value + " ";
+// }
+
+//Check if hour and : is located
+if(myTime.value.length == 6){
+    if(myTime.value.substring(5, 6) != " "){
+        myTime.value = myTime.value.substring(0, myTime.value.length-3);
+        timeCheckerMessage.innerHTML = "Please enter valid minute format 00 - 59.";
+    }
+}
+
+//Add PM when user press p or a and remove anything thats not p or a
+// if(myTime.value.length > 6){
+//     if(myTime.value.substring(6, 8) == "p" || myTime.value.substring(6, 8) == "P"){	
+//         if(myTime.value.substring(6, 8) == "p"){
+//             myTime.value = myTime.value.replace("p","PM");
+//             myTime.blur();
+//             timeCheckerMessage.innerHTML = "";	
+//         }
+//         if(myTime.value.substring(6, 8) == "P"){
+//             myTime.value = myTime.value.replace("P","PM");
+//             myTime.blur();	
+//             timeCheckerMessage.innerHTML = "";
+//         }			
+//     } else if(myTime.value.substring(6, 8) == "a" || myTime.value.substring(6, 8) == "A"){
+//         if(myTime.value.substring(6, 8) == "a"){
+//             myTime.value = myTime.value.replace("a","AM");
+//             myTime.blur();
+//             timeCheckerMessage.innerHTML = "";	
+//         }
+//         if(myTime.value.substring(6, 8) == "A"){
+//             myTime.value = myTime.value.replace("A","AM");
+//             myTime.blur();
+//             timeCheckerMessage.innerHTML = "";	
+//         }			
+//     } else {
+//     myTime.value = myTime.value.substring(0, myTime.value.length-1);
+//     timeCheckerMessage.innerHTML = "Please type 'a' for AM or 'p' for PM.";
+//     }		
+// }
+
+
+// }
+
+// function timeChecker(myTime) {
+// if (!isNaN(myTime.value.substring(0, 2)) == false){
+//     myTime.value = "";
+//     timeCheckerMessage.innerHTML = "Please enter valid time format, example 12:59 PM.";
+// }
+// if (!isNaN(myTime.value.substring(4, 5)) == false){
+//     myTime.value = "";
+//     timeCheckerMessage.innerHTML = "Please enter valid time format, example 12:59 PM.";
+// }
+// if (myTime.value.substring(6, 8) == "PM"){
+
+// } else if (myTime.value.substring(6, 8) == "AM") {
+// } else {
+//     myTime.value = "";
+//     timeCheckerMessage.innerHTML = "Please enter valid time format, example 12:59 PM.";
+// }
+    
+}
     </script>
   </body>
 </html>

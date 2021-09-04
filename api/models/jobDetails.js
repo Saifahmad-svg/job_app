@@ -5,6 +5,7 @@ const jobDetailsSchema = new mongoose.Schema({
     noOfPersons : Number,
     startDate: Date,
     startTime: String,
+    meridiem: String,
     duration : Number,
     reportTime : String,
     requiredExperience : [],
