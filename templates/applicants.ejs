@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applicants</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap" rel="stylesheet">
     <style>
     .modal {
   position: fixed;
@@ -40,7 +43,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
  .mbtnwrap{
-    gap: 10px;
+    gap: 19px;
     display: flex;
     justify-content: center;
         }
@@ -59,8 +62,10 @@
     justify-content: center;
 }
 .modal__container p{
-  font-size: 30px!important;
-    padding-bottom: 20px;
+  font-size: 36px!important;
+    padding-bottom: 30px;
+    font-weight: bold!important;
+    color: #000000!important;
 }
 
          body {
@@ -86,7 +91,7 @@
             font-size: 25px;
             font-family: "Lato", sans-serif;
             font-style: normal;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 26px;
             line-height: 31px;
             color: #FFFFFF;
@@ -96,6 +101,7 @@
         width: auto;
         padding-right: 32px;
         padding-top: 106px;
+        /* height: 100vh; */
         padding-left: 395px;
         padding-top: 111px;
         }
@@ -141,17 +147,18 @@
         .subhead h3{
             font-family: "Lato",sans-serif;
             font-style: normal;
-            font-weight: bold;
+            font-weight: 900;
             font-size: 25px;
             line-height: 30px;
         }
         .subhead p{
             font-family: "Lato",sans-serif;
             font-style: normal;
-            font-weight: bold;
+            font-weight: 900;
             font-size: 20px;
             line-height: 30px;
             color: #5E5E5E;
+            padding-left: 10px;
         }
         hr {
         /* padding-left: 150px ; */
@@ -170,7 +177,8 @@
         .infohead h3{
         font-family: "Lato",sans-serif;
         font-style: normal;
-        font-size: 25px;
+        font-size: 24px;
+        font-weight: 600;
         width: 250px;
         line-height: 30px;
         }
@@ -180,7 +188,8 @@
         .infohead p{
             font-family: "Lato",sans-serif;
             font-style: normal;
-            font-size: 20px;
+            font-size: 24px;
+            font-weight: 500;
             line-height: 30px;
             color: #5E5E5E;
         }
@@ -195,7 +204,7 @@
              font-style: normal;
             font-weight: 500;
             font-size: 20px;
-            line-height: 24px;
+            line-height: 23px;
             border: none;
             border-color: #5D4DA8;
             align-items: center;
@@ -203,6 +212,10 @@
             text-decoration: none;
             justify-content: center;
             cursor: pointer;
+        }
+        .modalBtn{
+          width: 131px;
+          height: 44px;
         }
      .btnwrap{
          display: flex;
@@ -219,7 +232,7 @@
              font-style: normal;
             font-weight: 500;
             font-size: 20px;
-            line-height: 24px;
+            line-height: 23px;
             background: #D8D8D8;
             border-radius: 10px;
             border-color: #D8D8D8;
@@ -250,7 +263,7 @@
         background-image: url(../css/orange-patch.png), url(../css/yellow-patch-rotated.png), url(../css/round-pink-patch.png);
         /* background-image: url(../css/orange-patch.png), url(../css/yellow-patch-rotated.png), url(../css/round-pink-patch.png); */
         background-repeat: no-repeat;
-        height: 100%;
+        /* height: 100vh; */
         background-position: bottom left -164px, right 60px top -65px, center right;
         width: 100%;
       }
@@ -424,7 +437,7 @@
                 <p>:</p>
                 <p><%= sdata.userNumber%></p>
                 <div class="btnwrap">
-                <a href="#jsModal" id="popup" class="jsModalTrigger hire">Hire</a>
+ <button class="mbton" onclick="onRejection('<%= data._id%>','<%= sdata._id%>')"><a href="#jsModal" id="popup" class="jsModalTrigger hire">Hire</a></button>
                 
                 
                 <div id="jsModal" class="modal">
@@ -436,15 +449,15 @@
                       <div class="modal__close jsModalClose mbtnwrap">
                         <form action="/company/hire" method="POST">
                           <div class="hide">
-                            <input type="text" name="uid" value="<%= data._id%>">
-                            <input type="text" name="aid" value="<%= sdata._id%>">
+                            <input type="text" name="jobId" value="<%= data._id%>">
+                            <input type="text" name="applicantId" class="data">
                               </div>
                               
-                              <button id="hireBtn" class="hire" type="submit">Yes</button>
+                              <button id="hireBtn" class="hire modalBtn" type="submit">Yes</button>
                               
                             </form>      
                             
-                            <button class="hire">No</button>
+                            <button class="hire modalBtn">No</button>
                           </div>                         
                         </div>
                       </div>
@@ -461,10 +474,10 @@
                             <input type="text" name="applicantId" class="data">
                           </div>
                         <div class="modal__close jsModalClose mbtnwrap">
-                        <button id="hireBtn" class="hire" type="submit">Yes</button>
+                        <button id="hireBtn" class="hire modalBtn" type="submit">Yes</button>
                        
                       </form>      
-                        <button class="hire">No</button>
+                        <button class="hire modalBtn">No</button>
                       </div>                         
                     </div>
                       </div>
@@ -485,7 +498,8 @@
 function onRejection(jobData,userData) {
   for(i=0; i<100;i++){
   document.getElementsByClassName("data")[i].value = userData;
-  console.log(activeUser)
+  console.log(jobData)
+  console.log(userData)
   }
 }
 

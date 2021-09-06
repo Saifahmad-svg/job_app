@@ -21,7 +21,8 @@ router.use(
 router.post("/register", async (req, res) => {
   let userNumber = req.body.userNumber;
   if (!userNumber) {
-    res.send("Please enter all the fields");
+    res.send("Please enter valid number");
+    console.log("Please enter valid number");
     return;
   }
   try {
@@ -271,11 +272,12 @@ router.post("/hire",(req, res) => {
   let mid = req.session.User.id;
   let id =mongoose.Types.ObjectId(mid);
   // let userId = mongoose.Types.ObjectId(req.params.id);
-  let did = mongoose.Types.ObjectId( req.body.uid);
-  let aid =mongoose.Types.ObjectId( req.body.aid);
+  let jobId = mongoose.Types.ObjectId( req.body.jobId);
+  let applicantId =mongoose.Types.ObjectId( req.body.applicantId);
   // console.log(userId)
   jobDetails
-    .findOneAndUpdate({ _id: did }, { $addToSet: { hired: aid } })
+    .findOneAndUpdate({ _id: jobId }, { $addToSet: { hired: applicantId } })
+    .findOneAndUpdate({ _id: jobId }, { $pull: { applicants: applicantId } })
     .exec(async function (err, docs) {
       if (err) throw err;
       
@@ -292,7 +294,7 @@ router.post("/hire",(req, res) => {
 
     });
   newUser
-    .findOneAndUpdate({ _id: aid }, { $addToSet: { hiredfor: did } })
+    .findOneAndUpdate({ _id: applicantId }, { $addToSet: { hiredfor: jobId } })
     .exec(function (err, docs) {
       if (err) throw err;
     });
@@ -306,8 +308,8 @@ router.post("/reject",async(req, res) => {
   let jobId =mongoose.Types.ObjectId(req.body.jobId);
   let applicantId =mongoose.Types.ObjectId(req.body.applicantId);
 
-  console.log("Applying for",jobId)
-  console.log("Applicant Id",applicantId)
+  console.log("Rejected Applicant of Job",jobId)
+  console.log("Rejected Applicant Id",applicantId)
 
   jobDetails
     .findOneAndUpdate({ _id: jobId }, { $pull: { applicants: applicantId } })

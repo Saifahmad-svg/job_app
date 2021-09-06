@@ -8,10 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap" rel="stylesheet">
     <title>Job Posting</title>
     <style>
       body {
@@ -37,7 +34,7 @@
         font-size: 25px;
         font-family: "Lato", sans-serif;
         font-style: normal;
-        font-weight: bold;
+        font-weight: 700;
         font-size: 26px;
         line-height: 31px;
         color: #ffffff;
@@ -53,7 +50,7 @@
       .title {
         font-family: "Lato", sans-serif;
         font-style: normal;
-        font-weight: bold;
+        font-weight: 700;
         font-size: 48px;
         line-height: 58px;
         color: #5d4da8;
@@ -111,7 +108,7 @@
       }
       .form {
       width: 130px;
-      font-size: 35px;
+      font-size: 20px;
       padding: 5px;
       border: 2px solid;
       border-radius: 5px;
@@ -217,12 +214,12 @@
         border-radius: 8px;
         margin-top: 15px;
         font-style: normal;
-        line-height: 22px;
+        /* line-height: 22px; */
         width: 130px;
-        font-size: 35px;
+        font-size: 20px;
         padding: 5px;
         text-align: center;
-        padding-left: 25px;
+        padding-left: 33px;
         color: #5E5E5E;
         font-weight: bold;
       }
@@ -234,10 +231,16 @@
       .style-select {
         color: rebeccapurple;
       }
+      select{
+        -webkit-appearance: none;
+        background-image: url('/css/down.png');
+        background-position: top 22px right 12px;
+        background-repeat: no-repeat;
+      }
       .label {
         font-family: "Lato", sans-serif;
         font-style: normal;
-        font-weight: 500;
+        font-weight: 400;
         font-size: 16px;
         line-height: 19px;
         color: #5e5e5e;
@@ -250,8 +253,8 @@
       label {
         font-family: "Lato", sans-serif;
         font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
+        font-weight: 400;
+        font-size: 18px;
         line-height: 19px;
         color: #5e5e5e;
         /* padding: 20px 88px; */
@@ -371,7 +374,7 @@
         <a href="/company/proftype">Type of Profile</a>
         <a href="/company/profinfo">Profile Information</a>
         <div class="arrowWrap">
-          <a href="/company/prof">Job Posting</a>
+          <a href="/company/jobposting">Job Posting</a>
 
           <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
         </div>
@@ -421,7 +424,7 @@
               </div>
               <div class="bussname">
                 <p>Job start date</p>
-                <input class="inp pink" type="date" name="startDate" />
+                <input class="inp pink calender" type="date" name="startDate" />
               </div>
 
               <div class="bussname">
