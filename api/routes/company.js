@@ -20,9 +20,8 @@ router.use(
 
 router.post("/register", async (req, res) => {
   let userNumber = req.body.userNumber;
-  if (!userNumber) {
+  if (userNumber.length!==10) {
     res.send("Please enter valid number");
-    console.log("Please enter valid number");
     return;
   }
   try {
@@ -53,11 +52,11 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/proftype", (req, res) => {
+router.get("/proftype", authenticateUser,(req, res) => {
   res.render("proftype.html");
 });
 
-router.get("/jobposting", (req, res) => {
+router.get("/jobposting", authenticateUser,(req, res) => {
   res.render("jobposting.html");
 });
 
@@ -72,7 +71,7 @@ router.post("/smsVerification", (req, res) => {
   res.render("proftype.html");
 });
 
-router.post("/proftype", (req, res) => {
+router.post("/proftype",authenticateUser,(req, res) => {
   let userNumber = req.session.User.userNumber;
   const jobType = req.body.jobType;
   req.session.User = {
@@ -106,7 +105,7 @@ let upload = multer({ storage: Storage });
 
 // let multipleUpload = upload.fields([{name:'file1', maxcount:3},{name:'file2',maxcount:3}])
 
-router.get("/profinfo", (req, res) => {
+router.get("/profinfo",authenticateUser,(req, res) => {
   let userNumber = req.session.User.userNumber;
   res.render("profinfo",{number: userNumber});
 });
@@ -162,7 +161,7 @@ router.post("/profinfo",upload.any(
     
   });
 
-router.post("/jobdetails", (req, res) => {
+router.post("/jobdetails",(req, res) => {
   const jobdetails = new jobDetails({
     userNumber: req.session.User.userNumber,
     postName: req.body.postName,
@@ -191,7 +190,7 @@ router.post("/jobdetails", (req, res) => {
     });
 });
 
-router.get("/livejobs", (req, res) => {
+router.get("/livejobs",authenticateUser,(req, res) => {
   let userNumber = req.session.User.userNumber;
   jobDetails.find({userNumber}).exec(function (err, data) {
     if (err) throw err;
@@ -200,7 +199,7 @@ router.get("/livejobs", (req, res) => {
 });
 
 // here id should be of jobdetails
-router.get("/delete/:id", (req, res) => {
+router.get("/delete/:id",authenticateUser,(req, res) => {
   let id = mongoose.Types.ObjectId(req.params.id);
   jobDetails.findByIdAndDelete(id).exec(function (err, data) {
     if (err) throw err;
@@ -208,7 +207,7 @@ router.get("/delete/:id", (req, res) => {
   });
 });
 
-router.get("/applications", (req, res) => {
+router.get("/applications",authenticateUser,(req, res) => {
   let userNumber = req.session.User.userNumber;
   jobDetails.find({userNumber}).exec(function (err, data) {
     if (err) throw err;
@@ -216,7 +215,7 @@ router.get("/applications", (req, res) => {
   });
 });
 
-router.post("/applicants", async(req, res) => {
+router.post("/applicants",async(req, res) => {
   
   let userNumber = req.session.User.userNumber;
   let id = mongoose.Types.ObjectId(req.body.id);
@@ -237,7 +236,7 @@ router.post("/applicants", async(req, res) => {
     })
   });
 
-  router.get("/applicants", async(req, res) => {
+  router.get("/applicants",authenticateUser,async(req, res) => {
   
     let userNumber = req.session.User.userNumber;
     let id = mongoose.Types.ObjectId(req.session.User.id);
@@ -333,5 +332,10 @@ router.post("/reject",async(req, res) => {
     .exec(function (err, docs) {
       if (err) throw err;
     });
+});
+
+router.get("/logout", authenticateUser, (req, res) => {
+  req.session.User = null;
+  res.render("auth.html");
 });
 module.exports = router;

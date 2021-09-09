@@ -8,7 +8,7 @@ const jobDetailsSchema = new mongoose.Schema({
     meridiem: String,
     duration : Number,
     reportTime : String,
-    requiredExperience : [],
+    requiredExperience : Number,
     training : String,
     payment : Number,
     paymentMode: String,

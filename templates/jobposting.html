@@ -380,6 +380,7 @@
         </div>
         <a href="/company/livejobs">Live Jobs</a>
         <a href="/company/applications">Applications</a>
+        <a href="/company/logout">Logout</a>
       </div>
       <div class="proftypeWrap">
         <div class="container">
@@ -409,6 +410,7 @@
                         type="number"
                         min="0"
                         value="0"
+                        readonly
                       />
                       <!-- <p id="data" class="data">0</p> -->
                       <button
@@ -460,6 +462,7 @@
                       min="1"
                       value="1"
                       max="6"
+                      readonly
                     />
                     <button
                       type="button"
@@ -492,13 +495,13 @@
                     </div>
                     <div class="requiredwrap">
                     <div class="radioWrap">
-                      <input type="radio" name="requiredExperience" value=NULL/>
+                      <input type="radio" name="requiredExperience" id="requiredExperience" onclick="enablemorethan()"/>
                       <label>More than</label>
                     </div>
                      <div class="sbtnwrap">
-                      <button type="button" class="smallBtnN" onclick="experienceDec()">-</button>
-                      <input class="data" id="experience" name="requiredExperience" type="number" min="0" value="0" />
-                      <button type="button" class="smallBtnP" onclick="experienceInc()">+</button>
+                      <button type="button" class="smallBtnN" id="negative" onclick="experienceDec()" disabled>-</button>
+                      <input class="data" id="experience" type="number" min="0" value="0" readonly />
+                      <button type="button" class="smallBtnP" id="positive" onclick="experienceInc()" disabled>+</button>
                      <div class="btnlabel"> years experience</div>
                     </div>
                   </div>
@@ -543,6 +546,7 @@
                       min="100"
                       value="0"
                       step="100"
+                      readonly
                     />
                     <button
                       type="button"
@@ -615,7 +619,7 @@
               <button type="submit" class="backBtn">
                 <a>Back</a>
               </button>
-              <button class="nextBtn">
+              <button class="nextBtn" onclick="experienceData()">
                 <a>Submit</a>
               </button>
             </div>
@@ -746,7 +750,7 @@ if(myTime.value.length == 6){
         timeCheckerMessage.innerHTML = "Please enter valid minute format 00 - 59.";
     }
 }
-
+}
 //Add PM when user press p or a and remove anything thats not p or a
 // if(myTime.value.length > 6){
 //     if(myTime.value.substring(6, 8) == "p" || myTime.value.substring(6, 8) == "P"){	
@@ -796,8 +800,21 @@ if(myTime.value.length == 6){
 //     myTime.value = "";
 //     timeCheckerMessage.innerHTML = "Please enter valid time format, example 12:59 PM.";
 // }
-    
-}
+      function enablemorethan(){
+              if(document.getElementById('requiredExperience').checked)
+            { document.getElementById('negative').disabled = false;
+            document.getElementById('positive').disabled = false;
+          }
+            else
+              {document.getElementById('negative').disabled = true;
+              document.getElementById('positive').disabled = true;
+            }
+            }
+      
+            function experienceData(){
+        let experience = document.getElementById('experience').value
+        document.getElementById('requiredExperience').value = experience;
+      }
     </script>
   </body>
 </html>

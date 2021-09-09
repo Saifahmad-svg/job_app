@@ -480,11 +480,12 @@
           <a href="/company/jobposting">Job Posting</a>
           <a href="/company/livejobs">Live Jobs</a>
           <a href="/company/applications">Applications</a>
+          <a href="/company/logout">Logout</a>
         </div>
       </div>
       <div class="proftypeWrap">
         <div class="container">
-          <form action="/company/profinfo" method="POST">
+          <form action="/company/profinfo" method="POST" enctype="multipart/form-data">
             <!-- <p class="router"><a href="/profile">Back</a></p> -->
             <div class="sec1">
               <h2 class="title">Profile Information</h2>
@@ -499,7 +500,7 @@
                   type="file"
                   accept="image/*"
                   id="choose-file"
-                  name="choose-file"
+                  name="businessPhoto[]"
                   value="/css/prof.png"
                 />
                 <label for="choose-file" class="uploadLink">
@@ -508,7 +509,7 @@
               </div>
               <div class="bussname">
                 <p>Name of Business / Individual</p>
-                <input type="text" name="nameOfBusiness" />
+                <input type="text" name="nameOfBusiness" required/>
               </div>
             </div>
             <hr />
@@ -517,7 +518,7 @@
               <div class="subsec2">
                 <div class="addline">
                   <p>Address line 1</p>
-                  <input type="text" name="addressLine" />
+                  <input type="text" name="addressLine" required/>
                 </div>
                 <div class="addline">
                   <p>Street</p>
@@ -528,16 +529,16 @@
               <div class="subsec2">
                 <div class="addline">
                   <p>Town / City</p>
-                  <input type="text" name="city" />
+                  <input type="text" name="city" required/>
                 </div>
                 <div class="addline">
                   <p>State</p>
-                  <input type="text" name="state" />
+                  <input type="text" name="state" required/>
                 </div>
               </div>
               <div class="addline">
                 <p>Pincode</p>
-                <input type="text" name="pincode" />
+                <input type="text" name="pincode" required/>
               </div>
             </div>
             <hr />
@@ -549,35 +550,11 @@
                 </div>
                 <div class="bussname">
                   <p>Business incorporation certificate</p>
-                  <!-- <input
-                    type="file"
-                    name="businessIncorporationCertificate"
-                    value="bulli"
-                    multiple
-                  />
-                  <a class="upload" href="#"> Upload</a> -->
-                  <!-- <input
-                    type="file"
-                    id="actual-btn"
-                    name="businessIncorporationCertificate"
-                    value="bulli"
-                    multiple
-                    hidden
-                  />
-                  <input
-                    type="text"
-                    id="actual-btn"
-                    name="businessIncorporationCertificate"
-                    value="bulli"
-                    multiple
-                  />
-             
-                  <label class="upload" for="actual-btn">Upload</label>
-                </div> -->
-                  <input id="uploadFile" placeholder="Choose File" class="" />
+                 
+                  <input id="uploadFile" name="businessIncorporationCertificate[]" placeholder="Choose File" readonly multiple/>
                   <div class="fileUpload btn btn-primary">
                     <span class="upload">Upload</span>
-                    <input id="uploadBtn" type="file" class="upload" />
+                    <input id="uploadBtn" name="businessIncorporationCertificate[]" type="file" class="upload" readonly multiple/>
                   </div>
                 </div>
               </div>
@@ -587,7 +564,7 @@
             </div>
             <div class="subsec3">
               <div class="btype">
-                <input type="checkbox" name="businessNature" value="Bar" />
+                <input type="checkbox" name="businessNature" value="Bar"/>
                 <label>Bar</label>
               </div>
               <div class="btype">
@@ -651,16 +628,18 @@
             </div>
             <div class="btypeWrap">
               <div class="btype">
-                <input type="checkbox" name="businessNature" value="Others" />
+                <input type="checkbox" name="businessNature" id="other-checkbox" onclick="other()"/>
                 <label>Others</label>
               </div>
-              <div class="othersHrLine"><input type="text" class="othersline"></div>
+
+              <div class="othersHrLine"><input type="text" id="other-textbox" class="othersline" disabled></div>
             </div>
+
             <div class="btnWrap">
               <button class="back" type="submit">
                 <a>Back</a>
               </button>
-              <button type="submit">
+              <button type="submit" onclick="otherData()">
                 <a>Next</a>
               </button>
             </div>
@@ -669,9 +648,27 @@
       </div>
     </div>
     <script>
-      document.getElementById("uploadBtn").onchange = function () {
-        document.getElementById("uploadFile").value = this.value;
-      };
+    
+      // onclick="document.getElementById('other-textbox').disabled=this.checked;"
+      function other(){
+        if(document.getElementById('other-checkbox').checked)
+       { document.getElementById('other-textbox').disabled = false;}
+      else
+        {document.getElementById('other-textbox').disabled = true;}
+      }
+      function otherData(){
+        let other = document.getElementById('other-textbox').value
+        document.getElementById('other-checkbox').value = other;
+      }
+
+  document.getElementById('uploadBtn').addEventListener('change', function(e) {
+  var list = document.getElementById('uploadFile');
+  list.value = '';
+  for (var i = 0; i < this.files.length; i++) {
+    list.value +=  this.files[i].name + ', ';
+  }
+  list.value = list.value.substring(0, list.value.lastIndexOf(","));
+});
       const chooseFile = document.getElementById("choose-file");
       const imgPreview = document.getElementById("img-preview");
       const imgBeforePreview = document.getElementById("img-before-preview");

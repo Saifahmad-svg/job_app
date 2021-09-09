@@ -150,6 +150,7 @@
             font-weight: 900;
             font-size: 25px;
             line-height: 30px;
+            padding-right: 10px;
         }
         .subhead p{
             font-family: "Lato",sans-serif;
@@ -158,13 +159,12 @@
             font-size: 20px;
             line-height: 30px;
             color: #5E5E5E;
-            padding-left: 10px;
         }
         hr {
         /* padding-left: 150px ; */
         margin-top: 42px;
         height: 1px;
-        
+        opacity: 0.2;
         background: #EBEBEB;
         }
         
@@ -390,6 +390,7 @@
             <a class="applicants uapplicants">Applicants</a>  
             <img src="/css/arrow.png" alt="arrow" class="arrowIcon" />
           </div>
+        <a href="/company/logout">Logout</a>
       </div>
       <div class="proftypeWrap">
     <div class="container">
@@ -398,15 +399,18 @@
         <p class="label">Total applicants - <%= data.applicants.length%> </p>
         <div class="head">
             <div class="subhead">
-                <h3>Job name -</h3>
+                <h3>Job name </h3>
+                <h3>-</h3>
                 <p> <%= data.postName%></p>
             </div>
             <div class="subhead">
-                <h3>Job date -</h3>
+                <h3>Job date </h3>
+                <h3>-</h3>
                 <p><%= data.startDate.toLocaleDateString()%></p>
             </div>
             <div class="subhead">
-                <h3>Job time -</h3>
+                <h3>Job time </h3>
+                <h3>-</h3>
                 <p><%= data.startTime%></p>
             </div>
            
