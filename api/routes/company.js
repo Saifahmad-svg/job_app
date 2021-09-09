@@ -7,6 +7,7 @@ const jobProvider = require("../models/jobProvider");
 const newUser = require("../models/newUser");
 const jobDetails = require("../models/jobDetails");
 const jobtype = require("../models/jobType");
+const Speakeasy = require('speakeasy');
 const multer = require("multer");
 const cookieSession = require("cookie-session");
 const path = require("path");
@@ -24,6 +25,15 @@ router.post("/register", async (req, res) => {
     res.send("Please enter valid number");
     return;
   }
+  let secret = Speakeasy.generateSecret();
+      console.log({
+      "token": Speakeasy.totp({
+        secret: secret.base32,
+        encoding:"base32"
+    }),
+    "remaining": (30- Math.floor((new Date().getTime()/1000 % 30)))
+    })
+
   try {
     let existUser = await newUser.find({ userNumber: { $in: userNumber } });
     let existJobProvider = await jobProvider.find({
@@ -32,8 +42,9 @@ router.post("/register", async (req, res) => {
     if (existUser.length == 0 && existJobProvider.length == 0) {
       req.session.User = {
         userNumber,
+        secret
       };
-      res.redirect('/company/smsAuthentication');
+      res.redirect('smsVerification');
     } else {
       if (existUser.length !== 0) {
         res.send(
@@ -42,6 +53,7 @@ router.post("/register", async (req, res) => {
       } else {
         req.session.User = {
           userNumber,
+          secret
         };
         res.send("Logged In");
       }
@@ -68,8 +80,23 @@ router.get("/smsVerification", (req, res) => {
   res.render("sms.html");
 });
 router.post("/smsVerification", (req, res) => {
-  res.render("proftype.html");
-});
+  let digits = req.body.digit1 + req.body.digit2 + req.body.digit3 + req.body.digit4 + req.body.digit5 + req.body.digit6;
+  console.log(digits)
+  let secret = req.session.User.secret
+  let valid = Speakeasy.totp.verify({
+    secret: secret.base32,
+    encoding:"base32",
+    token: parseInt(digits)
+    });
+
+    if (valid == true){
+        console.log("OTP matched")
+        res.render("proftype.html");
+    } else{
+        console.log("Wrong OTP")
+        res.send("Wrong Otp, Please Enter valid Otp")
+    }
+    });
 
 router.post("/proftype",authenticateUser,(req, res) => {
   let userNumber = req.session.User.userNumber;
