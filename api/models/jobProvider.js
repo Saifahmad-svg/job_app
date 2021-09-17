@@ -23,7 +23,7 @@ const jobProviderSchema = new mongoose.Schema({
         type :String
     },
     businessNature :{
-        type : String
+        type : []
     }
 })
 

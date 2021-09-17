@@ -50,12 +50,13 @@ router.post("/register", async (req, res) => {
         res.send(
           "This number belongs to a Job Seeker, please provide other number"
         );
+        // res.render('auth', { errormessage: 'This number belongs to a Job Seeker, please provide other number' });
       } else {
         req.session.User = {
           userNumber,
           secret
         };
-        res.send("Logged In");
+        res.redirect('smsVerification');
       }
     }
   } catch (error) {
@@ -74,7 +75,7 @@ router.get("/jobposting", authenticateUser,(req, res) => {
 
 
 router.get("/authentication", (req, res) => {
-  res.render("auth.html");
+  res.render("auth",{errormessage:''});
 });
 router.get("/smsVerification", (req, res) => {
   res.render("sms.html");
